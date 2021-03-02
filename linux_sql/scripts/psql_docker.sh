@@ -4,7 +4,7 @@
 sudo systemctl status docker || systemctl start docker
 
 case $1 in
-  create)
+	create)
 	  #check if docker container is already created
 	  if [ $(docker container ls -a -f name=jrvs-psql | wc -l) -eq 2 ]; then
 	  	echo "container already created"
@@ -12,8 +12,11 @@ case $1 in
   		exit 1;
 	  fi
 
+	  PGUSER=$2
+	  PGPASSWORD=$3
+
 	  #check if log-in info are supplied
-	  if [ $2 = "" ] || [ $3 = "" ]; then
+	  if [ "$PGUSER" = "" ] || [ "$PGPASSWORD" = "" ]; then
 		echo "missing user log-in info"
   		echo "exiting"
   		exit 1;
@@ -23,7 +26,7 @@ case $1 in
 	  docker volume create pgdata
 
 	  #create a new psql container
-	  docker run --name jrvs-psql -e POSTGRES_PASSWORD=$PGPASSWORD -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
+	  docker run --name jrvs-psql -e POSTGRES_PASSWORD="$PGPASSWORD" -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 "$PGUSER"
 
 	  #check if last command was a success
 	  if [ $? -eq 1 ]; then
@@ -33,19 +36,19 @@ case $1 in
 	  fi
 	;;
 
-  start)
+	start)
 	  docker container start jrvs-psql
 	  exit $?
 	;;
 
-  stop)
+	stop)
 	  docker container stop jrvs-psql
 	  exit $?
 	;;
 
-  #else any other argument is invalid
-  *)
-    echo -e "invalid argument\n"
-    exit 1
-  ;;
+	#else any other argument is invalid
+	*)
+	  echo -e "invalid argument\n"
+	  exit 1
+  	;;
 esac

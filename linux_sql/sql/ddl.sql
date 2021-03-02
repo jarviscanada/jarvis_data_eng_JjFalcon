@@ -3,7 +3,7 @@
 \c host_agent;
 
 -- create the host information table
-CREATE TABLE [IF NOT EXISTS]PUBLIC.host_info
+CREATE TABLE [IF NOT EXISTS] PUBLIC.host_info
 (
 host_info_id		SERIAL NOT NULL,
 hostname		VARCHAR(75) UNIQUE NOT NULL,

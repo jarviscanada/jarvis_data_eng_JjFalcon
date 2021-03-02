@@ -4,16 +4,16 @@
 sudo systemctl status docker || systemctl start docker
 
 case $1 in
-	create)
-	  #check if docker container is alrady created
-	  if [ `docker container ls -a -f name=jrvs-psql | wc -l` -eq 2 ]; then
+  create)
+	  #check if docker container is already created
+	  if [ $(docker container ls -a -f name=jrvs-psql | wc -l) -eq 2 ]; then
 	  	echo "container already created"
   		echo "exiting"
   		exit 1;
 	  fi
 
 	  #check if log-in info are supplied
-	  if [ $2 = "" || $3 = "" ]; then
+	  if [ $2 = "" ] || [ $3 = "" ]; then
 		echo "missing user log-in info"
   		echo "exiting"
   		exit 1;
@@ -33,18 +33,18 @@ case $1 in
 	  fi
 	;;
 
-	start)
+  start)
 	  docker container start jrvs-psql
 	  exit $?
 	;;
 
-	stop)
+  stop)
 	  docker container stop jrvs-psql
 	  exit $?
 	;;
 
   #else any other argument is invalid
-	*)
+  *)
     echo -e "invalid argument\n"
     exit 1
   ;;

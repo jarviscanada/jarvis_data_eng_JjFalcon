@@ -17,8 +17,8 @@ LANGUAGE PLPGSQL;
 -- list the host information by its average memory size in %
 SELECT	host_number, per5, used_memory, AVG(used_memory) OVER (PARTITION BY per5)
 FROM
-	(SELECT host_number, round5s(info.time_capture) as per5, (total_mem - memory_free)/total_mem::float as used_memory
-	FROM 		sample_info info
+	(SELECT host_number, round5s(time_capture) as per5, (total_mem - memory_free)/total_mem::float as used_memory
+	FROM 		sample_info
 	INNER JOIN 	sample_usage
 	USING 		(host_info_id)) AS temp;
 

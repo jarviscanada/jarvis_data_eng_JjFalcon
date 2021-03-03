@@ -14,7 +14,7 @@ cpu_model		VARCHAR(75) NOT NULL,
 cpu_mhz			FLOAT(5) NOT NULL,
 L2_cache		INT NOT NULL,
 total_mem		INT NOT NULL,
-time_capture		TIMESTAMP NOT NULL,
+time_capture		TIMESTAMPTZ NOT NULL,
 PRIMARY KEY(id)
 );
 
@@ -28,7 +28,6 @@ cpu_idle		NUMERIC(3,2),
 cpu_kernel		NUMERIC(3,2),
 disk_io			INT NOT NULL,
 disk_available		INT NOT NULL,
-time_capture		TIMESTAMP NOT NULL,
 PRIMARY KEY(host_usage_id),
 CONSTRAINT fk_host_info
 	FOREIGN KEY(host_info_id)
@@ -53,16 +52,16 @@ VALUES
 
 -- add sample data into host_usage table for query testing
 INSERT INTO sample_usage
-	(host_usage_id, host_info_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available, time_capture)
+	(host_usage_id, host_info_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
 VALUES
-	(1, 1, 300000, 0.9, 0.04, 2, 3, '2019-05-29 15:00:00.000'),
-	(2, 2, 100000, 0.8, 0.04, 1, 3, '2019-05-29 15:01:00.000'),
-	(3, 3, 400000, 0.6, 0.03, 1, 2, '2019-05-29 15:02:00.000'),
-	(4, 4, 350000, 0.7, 0.02, 3, 4, '2019-05-29 15:04:00.000'),
-	(5, 5, 200000, 0.8, 0.03, 2, 2, '2019-05-29 15:10:00.000'),
-	(6, 6, 300000, 0.9, 0.05, 2, 1, '2019-05-29 15:11:00.000'),
-	(7, 7, 250000, 0.9, 0.04, 2, 2, '2019-05-29 15:12:00.000'),
-	(8, 8, 100000, 0.9, 0.04, 2, 1, '2019-05-29 15:13:00.000'),
-	(9, 9, 300000, 0.5, 0.04, 2, 1, '2019-05-29 15:14:00.000'),
-	(10, 10, 300000, 0.5, 0.04, 2, 2, '2019-05-29 15:20:00.000');
+	(1, 1, 300000, 0.9, 0.04, 2, 3),
+	(2, 2, 100000, 0.8, 0.04, 1, 3),
+	(3, 3, 400000, 0.6, 0.03, 1, 2),
+	(4, 4, 350000, 0.7, 0.02, 3, 4),
+	(5, 5, 200000, 0.8, 0.03, 2, 2),
+	(6, 6, 300000, 0.9, 0.05, 2, 1),
+	(7, 7, 250000, 0.9, 0.04, 2, 2),
+	(8, 8, 100000, 0.9, 0.04, 2, 1),
+	(9, 9, 300000, 0.5, 0.04, 2, 1),
+	(10, 10, 300000, 0.5, 0.04, 2, 2);
 

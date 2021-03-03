@@ -1,4 +1,4 @@
--- sample queries
+-- sample queries using the 2 duplicate sample tables
 
 -- list the host information by their memory size in descending order for each cpu number
 SELECT		cpu_number, host_info_id, total_mem, avg(total_mem) OVER (PARTITION BY cpu_number) as avg_mem
@@ -32,3 +32,4 @@ FROM
 	GROUP BY 	host_number, per5
 	ORDER BY 	host_number) as newTemp
 WHERE	count < 3;
+

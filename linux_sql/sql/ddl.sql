@@ -35,6 +35,7 @@ CONSTRAINT fk_host_info
 		REFERENCES PUBLIC.host_info(host_info_id)
 );
 
+-- created duplicate sample tables [sample_info/usage] for testing purposes
 -- add sample data into host_information table for query testing
 INSERT INTO sample_info
 	(host_info_id, host_number, host_name, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, time_capture)

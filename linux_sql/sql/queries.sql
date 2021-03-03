@@ -29,7 +29,6 @@ FROM
 	FROM
 		(SELECT 	host_number, round5s(time_capture) as per5
 		FROM 		sample_info) as temp
-		GROUP BY 	host_number, per5
-		ORDER BY 	host_number) as newTemp
-		WHERE 		count < 3;
-
+	GROUP BY 	host_number, per5
+	ORDER BY 	host_number) as newTemp
+WHERE	count < 3;

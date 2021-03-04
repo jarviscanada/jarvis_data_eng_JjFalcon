@@ -7,12 +7,18 @@
 ./scripts/host_info.sh "localhost" 5432 "host_agent" "postgres" "mypassword"
 '
 
+#validate all arguments are supplied
+if [ "$#" -ne 5 ]; then
+  echo "Invalid number of parameters"
+  exit 1
+fi
+
 #assign cli arguments to variables
-PSQL_HOST=$1
-PSQL_PORT=$2
-PSQL_DB=$3
-PGUSER=$4
-PGPASS=$5
+psql_host=$1
+psql_port=$2
+psql_db=$3
+pguser=$4
+pgpass=$5
 
 #create meaningful and reusable aliases
 lscpu_out=`lscpu`
@@ -28,18 +34,18 @@ total_mem=$(grep -E '^MemTotal' /proc/meminfo | awk '{print $2}' | xargs)
 timestamp=`date '+%Y-%m-%d %H-%M-%S'`
 
 insert_stmt="INSERT INTO host_info \
-  (host_info_id, host_number, host_name, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, time_capture) \
+  (host_info_id, host_name, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, time_capture) \
   VALUES \
-    (DEFAULT, \
-    1, \
-    $hostname, \
-    $cpu_number, \
-    $cpu_architecture, \
-    $cpu_model, \
-    $cpu_mhz, \
-    $L2_cache, \
-    $total_mem, \
-    $timestamp);"
+  (DEFAULT, \
+  $hostname, \
+  $cpu_number, \
+  $cpu_architecture, \
+  $cpu_model, \
+  $cpu_mhz, \
+  $L2_cache, \
+  $total_mem, \
+  $timestamp);"
 
-export PGPASSWORD=$PGPASS
-psql -h $PSQL_HOST -p $PSQL_PORT -U $PGUSER -d $PSQL_DB -c $insert_stmt
+export PGPASSWORD=$pgpass
+psql -h $psql_host -p $psql_port -U $pguser -d $psql_db -c $insert_stmt
+exit $?

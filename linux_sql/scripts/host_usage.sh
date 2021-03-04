@@ -7,12 +7,18 @@
 ./scripts/host_usage.sh "localhost" 5432 "host_agent" "postgres" "mypassword"
 '
 
+#validate all arguments are supplied
+if [ "$#" -ne 5 ]; then
+  echo "Invalid number of parameters"
+  exit 1
+fi
+
 #assign cli arguments to variables
-PSQL_HOST=$1
-PSQL_PORT=$2
-PSQL_DB=$3
-PGUSER=$4
-PGPASS=$5
+psql_host=$1
+psql_port=$2
+psql_db=$3
+pguser=$4
+pgpass=$5
 
 #create meaningful and reusable aliases
 mem_info=`cat /proc/meminfo`
@@ -46,5 +52,6 @@ insert_stmt="INSERT INTO host_usage \
   FROM  host_info info \
   WHERE info.host_name = $host_name; "
 
-export PGPASSWORD=$PGPASS
-psql -h $PSQL_HOST -p $PSQL_PORT -U $PGUSER -d $PSQL_DB -c $insert_stmt
+export PGPASSWORD=$pgpass
+psql -h $psql_host -p $psql_port -U $pguser -d $psql_db -c $insert_stmt
+exit $?

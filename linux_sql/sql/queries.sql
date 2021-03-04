@@ -23,9 +23,10 @@ FROM
 	USING 		(host_info_id)) AS temp;
 
 -- list the host number of the hosts that failed to insert at least 3 entries to the host_usage table every 5 mintues
-SELECT 	host_number, this_count
+SELECT 	host_number, the_count
 FROM
-	(SELECT 	host_number, count(per5) as this_count
+	(SELECT 	host_number, count(per5) as the_count
+
 	FROM
 		(SELECT 	host_number, round5s(time_capture) as per5
 		FROM 		sample_info) as temp

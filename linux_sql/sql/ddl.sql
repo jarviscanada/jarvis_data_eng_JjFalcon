@@ -6,15 +6,6 @@
 CREATE TABLE [IF NOT EXISTS] PUBLIC.host_info
 (
 host_info_id			SERIAL NOT NULL,
-<<<<<<< HEAD
-host_name					VARCHAR(75) UNIQUE NOT NULL,
-cpu_number				INT NOT NULL,
-cpu_architecture	VARCHAR(10) NOT NULL,
-cpu_model					VARCHAR(75) NOT NULL,
-cpu_mhz						FLOAT(5) NOT NULL,
-L2_cache					INT NOT NULL,
-total_mem					INT NOT NULL,
-=======
 host_name			VARCHAR(75) UNIQUE NOT NULL,
 cpu_number			INT NOT NULL,
 cpu_architecture		VARCHAR(10) NOT NULL,
@@ -22,7 +13,6 @@ cpu_model			VARCHAR(75) NOT NULL,
 cpu_mhz			        FLOAT(5) NOT NULL,
 L2_cache			INT NOT NULL,
 total_mem			INT NOT NULL,
->>>>>>> feature/psql_docker
 time_capture			TIMESTAMPTZ NOT NULL,
 PRIMARY KEY(id)
 );
@@ -32,19 +22,11 @@ CREATE TABLE [IF NOT EXISTS] PUBLIC.host_usage
 (
 host_usage_id			SERIAL NOT NULL,
 host_info_id			INT NOT NULL,
-<<<<<<< HEAD
-memory_free				INT NOT NULL,
-cpu_idle					NUMERIC(3,2),
-cpu_kernel				NUMERIC(3,2),
-disk_io						INT NOT NULL,
-disk_available		INT NOT NULL,
-=======
 memory_free			INT NOT NULL,
 cpu_idle			NUMERIC(3,2),
 cpu_kernel			NUMERIC(3,2),
 disk_io			        INT NOT NULL,
 disk_available			INT NOT NULL,
->>>>>>> feature/psql_docker
 PRIMARY KEY(host_usage_id),
 CONSTRAINT fk_host_info
 	FOREIGN KEY(host_info_id)

@@ -46,11 +46,6 @@ Below is the illustration of the Database Schema.
 
 
 * host_usage.sh
-    * A bash script that collects the node's hardware specifications.
-    * The collected data is assumed to be static and inserted into the psql instance.
-
-
-* host_usage.sh
   * A bash script that collects the node's usage data.
   * The scripts will collect real-time data every minute using [crontab](https://phoenixnap.com/kb/set-up-cron-job-linux).
 

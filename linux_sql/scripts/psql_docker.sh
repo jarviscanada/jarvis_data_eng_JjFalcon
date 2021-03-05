@@ -19,7 +19,7 @@ case $cmd in
 
 	  #check if log-in info are supplied
 	  if [ "$pguser" = "" ] || [ "$pgpassword" = "" ]; then
-			echo "missing user log-in info"
+		echo "missing user log-in info"
   		echo "exiting"
   		exit 1;
 	  fi
@@ -30,7 +30,7 @@ case $cmd in
 
 	  #check if last command was a success
 	  if [ $? -eq 1 ]; then
-			echo "error creating container"
+		echo "error creating container"
   		echo "exiting"
   		exit 1;
 	  fi

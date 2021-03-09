@@ -32,4 +32,4 @@ FROM
 		FROM 		sample_info) as temp
 	GROUP BY 	host_name, per5
 	ORDER BY 	host_name) as newTemp
-WHERE	count < 3;
+WHERE	the_count < 3;

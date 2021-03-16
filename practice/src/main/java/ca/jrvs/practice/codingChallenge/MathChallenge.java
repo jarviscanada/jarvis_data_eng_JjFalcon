@@ -64,7 +64,7 @@ public class MathChallenge {
 
   /**
    * Count the number of prime numbers up to the given input number using Sieve of Eratosthenes
-   * algorithm Time Complexity: O(n^2)
+   * Time Complexity: O(n^2)
    *
    * @param number to determine the number of prime numbers within this range
    * @return total number of primes numbers
@@ -75,8 +75,7 @@ public class MathChallenge {
     // boolean data types are automatically initialized to false
     boolean[] primeArray = new boolean[number];
 
-    // mathematically there is no prime number greater than the current number and
-    // its square
+    // mathematically there is no prime number greater than the current number and its square
     for (int i = 2; i * i < primeArray.length; i++) {
       if (!primeArray[i]) {
         for (int j = i; j * i < primeArray.length; j++) {
@@ -98,9 +97,9 @@ public class MathChallenge {
   }
 
   /**
-   * Find the missing number is an array of sequential numbers using Summation Missing Number = Sum
-   * of the first n natural numbers less Sum of the elements in the given array Time Complexity:
-   * O(n)
+   * Find the missing number is an array of sequential numbers using Summation 
+   * Missing Number = Sum of the first n natural numbers less Sum of the elements in the given array 
+   * Time Complexity: O(n)
    *
    * @param numArray to determine which number is missing in the series of natural numbers
    * @return the missing number in the array
@@ -123,8 +122,9 @@ public class MathChallenge {
 
   /**
    * Find the missing number is an array of sequential numbers using the Gauss formula Gauss
-   * Formula: n*(n+1)/2 Missing Number = Sum of the first n natural numbers less Sum of the elements
-   * in the given array Time Complexity: O(n)
+   * Formula: n*(n+1)/2 Missing Number = Sum of the first n natural numbers less 
+   * Sum of the elements in the given array 
+   * Time Complexity: O(n)
    *
    * @param numArray to determine which number is missing in the series of natural numbers
    * @return the missing number in the array
@@ -142,7 +142,8 @@ public class MathChallenge {
   }
 
   /**
-   * Find the missing number is an array of sequential numbers using sets Time Complexity: O(n)
+   * Find the missing number is an array of sequential numbers using sets 
+   * Time Complexity: O(n)
    *
    * @param numArray to determine which number is missing in the series of natural numbers
    * @return the missing number in the array
@@ -163,7 +164,8 @@ public class MathChallenge {
   }
 
   /**
-   * Find the fibonacci number of a given "n" using recursion Time Complexity: O(2^n)
+   * Find the fibonacci number of a given "n" using recursion 
+   * Time Complexity: O(2^n)
    *
    * @return the nth fibo number
    */
@@ -178,7 +180,8 @@ public class MathChallenge {
   }
 
   /**
-   * Find the fibonacci number of a given "n" using dynamic programming Time Complexity: O(n)
+   * Find the fibonacci number of a given "n" using dynamic programming 
+   * Time Complexity: O(n)
    *
    * @param n          to determine the fibo number at that position
    * @param fibResults to hold the already calculated fibo number of the nth position
@@ -240,10 +243,9 @@ public class MathChallenge {
       System.out.println("OPTION 2: is given number Odd or Even using bitwise operator");
       System.out.println("OPTION 3: swap 2 numbers using bitwise operator");
       System.out.println("OPTION 4: swap 2 numbers using arithmetic operator");
-      System.out.println(
-          "OPTION 5: count the number of prime of a given number using Sieve of Eratosthenes");
+      System.out.println("OPTION 5: count the number of prime of a given number using Sieve of Eratosthenes");
       System.out.println("OPTION 6: find the missing number in a series using manual summation");
-      System.out.println("OPTION 7: find the missing number in a series using Gauss Formual");
+      System.out.println("OPTION 7: find the missing number in a series using Gauss Formula");
       System.out.println("OPTION 8: find the missing number in a series using Hash Set");
       System.out.println("OPTION 9: generate fibonacci series of n using recursion");
       System.out.println("OPTION 10: generate fibonacci series of n using dynamic programming");

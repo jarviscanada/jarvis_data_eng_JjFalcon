@@ -121,8 +121,8 @@ public class MathChallenge {
   }
 
   /**
-   * Find the missing number is an array of sequential numbers using the Gauss formula Gauss
-   * Formula: n*(n+1)/2 Missing Number = Sum of the first n natural numbers less 
+   * Find the missing number is an array of sequential numbers using the Gauss formula 
+   * Gauss Formula: n*(n+1)/2 Missing Number = Sum of the first n natural numbers less 
    * Sum of the elements in the given array 
    * Time Complexity: O(n)
    *

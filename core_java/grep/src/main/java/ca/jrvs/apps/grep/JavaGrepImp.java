@@ -121,6 +121,11 @@ public class JavaGrepImp implements JavaGrep {
   }
 
   public void main(String[] args) {
+    
+    if (args.length != 3) {
+      logger.error("Insufficient Arguments");
+    }
+    
     JavaGrepImp javaGrep = new JavaGrepImp();
     javaGrep.setRegex(args[0]);
     javaGrep.setRootPath(args[1]);

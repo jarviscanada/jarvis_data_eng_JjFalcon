@@ -60,7 +60,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
           .filter(file -> !Files.isDirectory(file))
           // returns a Path object
           .map(Path::getFileName)
-          // converts it to String
+          // converts it to File
           .map(Path::toFile)
           .collect(Collectors.toList());
     }

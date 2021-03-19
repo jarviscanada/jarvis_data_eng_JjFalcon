@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import java.nio.file.Files;
+//import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -17,11 +17,13 @@ public class JavaGrepImp implements JavaGrep {
   private String regex;
   private String rootPath;
   private String outFile;
-  private final Logger logger = LoggerFactory.getLogger(Wombat.class);
 
   @Override
   public void process() throws IOException {
     List<String> matchedLines = new ArrayList<String>();
+    //List<File> files = new ArrayList<File>();
+    //List<String> lines = new ArrayList<String>();
+
     String rootDir = this.getRootPath();
     List<File> files = this.listFiles(rootDir);
 
@@ -37,7 +39,7 @@ public class JavaGrepImp implements JavaGrep {
   }
 
   @Override
-  public List<File> listFiles(String rootDir) {
+  public List<File> listFiles(String rootDir) throws IOException {
     List<File> files = new ArrayList<File>();
     File directory = new File(rootDir);
 
@@ -45,7 +47,7 @@ public class JavaGrepImp implements JavaGrep {
     File[] currentFiles = directory.listFiles();
 
     // Only adds valid files
-    if (currentFiles != null) {
+    if(currentFiles != null) {
       for (File file : currentFiles) {
         if (file.isFile()) {
           files.add(file);
@@ -58,15 +60,16 @@ public class JavaGrepImp implements JavaGrep {
   }
 
   @Override
-  public List<String> readLines(File inputFile) {
+  public List<String> readLines(File inputFile) throws IOException {
     List<String> lines = new ArrayList<String>();
 
-    try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
-      for (String line; (line = br.readLine()) != null; ) {
+    try(BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
+      for(String line; (line = br.readLine()) != null; ) {
         lines.add(line);
       }
     } catch (IOException e) {
-      logger.error("Unable to read", e);
+      // replace with logger in IntelliJ
+      e.printStackTrace();
     }
 
     return lines;
@@ -76,6 +79,7 @@ public class JavaGrepImp implements JavaGrep {
   public boolean containsPattern(String line) {
     String pattern = this.getRegex();
     Matcher m = Pattern.compile(pattern).matcher(line);
+
     return (m.find());
   }
 
@@ -84,7 +88,7 @@ public class JavaGrepImp implements JavaGrep {
     String outFile = this.getOutFile();
     FileWriter fw = new FileWriter(outFile);
 
-    for (String line : lines) {
+    for(String line : lines) {
       fw.write(line);
     }
     fw.close();
@@ -120,16 +124,17 @@ public class JavaGrepImp implements JavaGrep {
     this.outFile = outFile;
   }
 
-  public void main(String[] args) {
-    JavaGrepImp javaGrep = new JavaGrepImp();
-    javaGrep.setRegex(args[0]);
-    javaGrep.setRootPath(args[1]);
-    javaGrep.setOutFile(args[2]);
-
-    try {
-      javaGrep.process();
-    } catch (IOException e) {
-      logger.error("Unable to read", e);
-    }
-  }
+//  public void main(String[] args) {
+//    JavaGrepImp javaGrep = new JavaGrepImp();
+//    javaGrep.setRegex(args[0]);
+//    javaGrep.setRootPath(args[1]);
+//    javaGrep.setOutFile(args[2]);
+//
+//    try {
+//      javaGrep.process();
+//    } catch (IOException e) {
+//      // replace with logger in IntelliJ
+//      logger.error("Unable to read", e);
+//    }
+//  }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface JavaGrep {
 
   /**
-   * @throws IOException
+   * @throws IOException for invalid files
    */
   void process() throws IOException;
 
@@ -15,7 +15,7 @@ public interface JavaGrep {
    * Traverse a given directory and return all files
    * @param rootDir input directory
    * @return files under the rootDir
-   * @throws IOException
+   * @throws IOException for invalid files
    */
   List<File> listFiles(String rootDir) throws IOException;
 

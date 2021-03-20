@@ -1,9 +1,6 @@
 package ca.jrvs.apps.grep;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,19 +8,18 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class JavaGrepLambdaImp extends JavaGrepImp {
 
   /**
-   * Override process with Parallel Stream
-   * @throws IOException
+   * Override process with a nested call to stream function
+   *
+   * @throws IOException for invalid files
    */
   public void process() throws IOException {
-    List<String> matchedLines = new ArrayList<String>();
+    List<String> matchedLines = new ArrayList<>();
     String rootDir = this.getRootPath();
     List<File> files = this.listFiles(rootDir);
 
@@ -35,10 +31,11 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
   }
 
   /**
+   * New method to processFiles for matching patterns
    *
-   * @param file
-   * @return
-   * @throws IOException
+   * @param file to find matching pattern
+   * @return list of matched files
+   * @throws IOException for invalid files
    */
   public List<String> processFiles(File file) throws IOException {
     return Files.lines(Paths.get(file.getPath()))
@@ -48,9 +45,10 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
 
   /**
    * Override listFiles with Streams
-   * @param rootDir
-   * @return
-   * @throws IOException
+   *
+   * @param rootDir to retrieve valid files
+   * @return list of valid files
+   * @throws IOException for invalid file directory
    */
   public List<File> listFiles(String rootDir) throws IOException {
     // https://www.baeldung.com/java-list-directory-files
@@ -68,9 +66,10 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
 
   /**
    * Override readLines with streams
-   * @param inputFile
-   * @return
-   * @throws IOException
+   *
+   * @param inputFile to retrieve lines
+   * @return list of lines
+   * @throws IOException invalid file
    */
   public List<String> readLines(File inputFile) throws IOException {
     // https://www.baeldung.com/java-8-streams
@@ -79,40 +78,24 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
   }
 
   /**
-   * Override containsPattern with lambda
-   * uses String built-in method .matches
-   * @param line
-   * @return if line matches regex pattern
+   * Override containsPattern with lambda uses String built-in method .matches
+   *
+   * @param line to assess if it contains pattern
+   * @return if ture if line matches regex pattern
    */
   public boolean containsPattern(String line) {
     return line.matches(this.getRegex());
   }
 
   /**
-   * Override writeTofile with streams
-   * @param lines
-   * @throws IOException
+   * Override writeToFile with streams
+   *
+   * @param lines to write into a file
+   * @throws IOException if invalid filename
    */
   public void writeToFile(List<String> lines) throws IOException {
     // https://www.baeldung.com/java-append-to-file
-    // ***********************************************************
     Files.write(Paths.get(this.getOutFile()), lines, StandardOpenOption.APPEND);
   }
 
-  public static void main(String[] args) {
-    JavaGrepImp javaGrep = new JavaGrepImp();
-    if (args.length != 3) {
-      logger.error("Insufficient Arguments");
-    } else {
-      javaGrep.setRegex(args[0]);
-      javaGrep.setRootPath(args[1]);
-      javaGrep.setOutFile(args[2]);
-    }
-
-    try {
-      javaGrep.process();
-    } catch (IOException e) {
-      logger.error("Unable to read", e);
-    }
-  }
 }

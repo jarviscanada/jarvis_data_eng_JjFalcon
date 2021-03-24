@@ -75,7 +75,7 @@ public class JDBCExecutor {
       System.out.println(order);
        */
 
-      /* Test for executing stored procedure
+      /* Testing for executing stored procedure
       List<Order> orders = orderDAO.getOrdersForCustomer(789);
       orders.forEach(System.out::println);
        */

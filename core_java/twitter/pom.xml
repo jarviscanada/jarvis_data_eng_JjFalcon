@@ -18,7 +18,6 @@
   <version>1.0-SNAPSHOT</version>
 
   <!--Make sure you use JDK1.8-->
-
   <!--dependencies-->
   <dependencies>
     <!--oauth 1.0 and httpclient4-->
@@ -56,6 +55,8 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-  </dependencies>
 
+
+
+  </dependencies>
 </project>

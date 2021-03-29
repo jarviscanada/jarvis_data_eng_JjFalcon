@@ -1,0 +1,182 @@
+# Preferred name (Characters only)
+name: "JJ Falcon"
+# Your GitHub repo root URL
+github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_JjFalcon
+
+# Introduce yourself, your academic and professional background.
+# What excites you about the software industry and your passion. At least 80 words
+summary: "\n
+I completed my bachelor's degree in Computer Science at Ryerson University with a software engineering concentration in December 2020.
+\n\n
+The concentration allowed me to focus my academics and excelled on the entire Software Development cycle.  It also exposed me to different Data Management Methodologies.
+\n\n
+I am a quick learner, creative and analytical thinker who believes that in most cases, there is no need to reinvent the wheel but look for an opportunity to make existing projects better and more efficient.
+\n\n
+I have a customer-centric approach to my work ethics.   I am a firm believer that success at work means helping others be better at what they do.  There is no greater motivation for me than to see my work or be a part of a team whose work has a direct impact on making other people's life easier.  This is what excites me about the software industry.
+\n\n
+Throughout my coop experiences, I have gained a great understanding and hands-on experience of the software development life cycle.  This includes business requirements gathering,  designing solutions,  implementing and maintaining the solution in order to produce results that are meaningful to the organization.
+\n\n
+Additionally, through the Jarvis training program, I have had the opportunity to use some of the technologies in manipulating and mining data.
+\n\n
+I also have a passion for learning new things, and I continually challenge myself to find every opportunity to learn or be a part of something new and innovative.
+\n\n
+I understand the importance and value of data to help companies make better business decisions and be competitive in the market, and I am looking for opportunities in this field."
+# Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
+skills:
+  # At least 5 skills
+  proficient:
+    - Java
+    - Python
+    - RDBMS/SQL
+    - Linux/Bash
+    - Agile/Scrum
+    - Docker
+    - Git
+    - Data Structures and Algorithms
+  # At least 5 skills
+  competent:
+    - Javascript
+    - HTML/CSS
+    - Bootstrap
+    - UML Diagrams
+    - JIRA
+  # At least 5 skills
+  familiar:
+    - C
+    - Prolog for AI
+    - PHP/React/Node JS
+    - R / Hadoop
+    - Axure / GCP
+    - SAS Enterprise Guide / Cognos / MicroStrategy BI
+    - VBA
+
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Cluster Monitor"
+    git_url: "/linux_sql"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "\n
+    Developed a Linux Cluster Monitoring Agent using bash and psql CLI in CentOS to collect the hardware specifications and monitor the resource usage of nodes connected to a Linux Cluster.
+    \n
+    Deployed the application using Docker which is used to create a PostgreSQL instance to manage both static and dynamic data collection stored in RDBMS that can later be queried to produce reports for resource planning."
+  - name: "Core Java Apps"
+    git_url: "/core_java"
+    description:
+      - "Twitter App: Developed an app that utilizes the Twitter and RESTful APIs using the MVC architecture to enable a Twitter user to fetch, post, and delete tweets.  Tested using Maven's JUnit testing."
+      - "JDBC App: Developed an application that demonstrates the DAO/DTO implementation of JDBC to a PostgreSQL RDBMS.  Implemented and tested basic CRUD and DML operations."
+      - "Grep App: Developed an application that simulates the Unix egrep -R implementation that searches all files recursively from a given directory and outputs a file containing all the lines that match the given regex pattern.  Deployed via Docker."
+  - name: "Springboot App"
+    git_url: "/springboot"
+    description: "COMING SOON"
+  - name: "Python Data Analytics"
+    git_url: "/python_data_anlytics"
+    description: "COMING SOON"
+  - name: "Hadoop"
+    git_url: "/hadoop"
+    description: "COMING SOON"
+  - name: "Spark"
+    git_url: "/spark"
+    description: "COMING SOON"
+  - name: "Cloud/DevOps"
+    git_url: "/cloud_devops"
+    description: "COMING SOON"
+
+# List of personal or academic projects
+# Feel free to add more projects
+highlighted_projects:
+    #project name
+  - name: "Coop Work Projects: AODA Converter"
+    #URL is optional
+    git_url: "https://github.com/f57c0n/JB-aodaExcel"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "Developed an application program that takes in an Excel file as input.  The program reads and convert the file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant and saves it to a new Excel file. \n"
+  - name: "Coop Work Projects:  SQL Loader"
+    git_url: "https://github.com/f57c0n/JB-sqlLoader"
+    description: "Developed an application program that takes in a CSV file as input.  The program reads and analyze the file to detect column data types and remove invalid entries, and provide DML options to review the file and a commit option to create and insert data into a remote database.  It also outputs a file with rows containing invalid entries.\n"
+#The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+#The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).
+professional_experience:
+  #Write your Jarvis role as a professional experience rather than training.
+  - title: Application Programmer – COOP
+    company: Ontario Ministry of Health
+    duration: JAN2020-APR2020
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "\n\n
+    Designed and developed a program to convert an excel file into an AODA (Accessibility for Ontarians with Disabilities) compliant excel file with TkInter as GUI and python openpyxl. Also designed use-cases for testing and providing ongoing maintenance/updates.
+    \n\n
+    Designed and developed a program to load external data files into DB with several menu options to manipulate data first before loading to Oracle using python pandas.
+    \n\n
+    Researched and provided proof of concepts and illustrations on providing predictive data models as a service to end users, as well as debugging / redesigning old VBA codes and assistance with JS implementation in Cognos.
+    \n"
+  - title: Software Development – COOP
+    company: Symcor Inc.
+    duration: MAY2019-DEC2019
+    description: "\n\n
+    Assist in qualitative research to gain an understanding of the human needs involved in designing solutions and to help reframe the problem in human-centric ways through the design thinking process. Research work also included trends in solutions and competitive landscape.
+    \n\n
+    Distill information from the qualitative research to create design thinking personas and to generate multiple solution ideas for that persona. Adopted a hands-on approach in prototyping those ideas; including sketching and wireframes.
+    \n\n
+    Maintained and updated internal website built on PHP. Mostly front-end work.
+    \n"
+  - title: Predictive Modelling Analyst – COOP
+    company: Rogers Communication
+    duration: SEP2018-DEC2018
+    description: "\n\n
+    Accessed information in the databases to create data extracts and cleansing, transformations and summaries by using Proc SQL scripting within SAS Enterprise, and provided these for marketing initiatives.
+    \n\n
+    Visualized data through excel dashboards by means of pivot tables and charts which are then used in PowerPoint presentations to internal / external teams within the marketing and sales business unit.
+    \n\n
+    Reviewed data to look at patterns and unusual data, and perform sample testing and/or research to validate it.
+    \n\n
+    Constructed supervised and unsupervised churn models and ensure their end-to-end performance validation.
+    \n"
+#List of edcuation
+education:
+  - school_name: Ryerson University
+    duration: SEP2015-DEC2020
+    degree: BSc (Honours), Computer Science. Software Engineering concentration
+    department: Computer Science
+    # optional
+    awards_achievements:
+      - Honours Degree
+      - Consistent Dean's List
+      - "GPA: 3.72/4.30"
+  - school_name: CGA Canada
+    duration: SEP2009-DEC2014
+    degree: CPA, CGA Certification
+    department: Accounting
+    awards_achievements:
+      - Professional Designation
+  - school_name: SAIT Polytechnic
+    duration: SEP2010-DEC2013
+    degree: Bachelor Applied Business Administration Accounting and IT
+    department: Business Administration
+    awards_achievements:
+      - Honours Degree
+      - "GPA: 3.62/4.00"
+
+#Optional section
+others:
+    #category
+  - title: "Soft Skills"
+    #list of items
+    bullets:
+      - "SOFT SKILLS:"
+      - "Strength in problem solving, design and analysis and a quick learner"
+      - "Have a strong desire to continually develop and grow both personally and professionally"
+      - "Consistently recognized as being an effective worker who thrives on new challenges and responsibilities"
+      - "Possesses excellent interpersonal and organizational skills"
+      - "Adapts a customer-centric approach to work ethic for both internal and external stakeholders"
+      - "Known for going above and beyond the job description and assisting co-workers / team members"
+      - "Highly intuitive and applies the same principle to work produced"
+      - "Takes initiative in acquiring necessary resources independently in ensuring task completion"
+      - "Works effectively well independently or collaboratively with others"
+      
+
+  - title: "Activities/Hobbies"
+    bullets:
+      - ":"
+      - "ACTIVITIES/HOBBIES:"
+      - "Gardening"
+      - "Volunteer, Carnegie Community Centre:  Kitchen Help"

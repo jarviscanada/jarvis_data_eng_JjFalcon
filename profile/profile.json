@@ -114,6 +114,12 @@
   ],
   "professional_experience": [
     {
+      "company": "Jarvis",
+      "description": "\n\n Implemented multiple progressive projects in a scrum environment following the Software Development Life Cycle using the agile methodology. \n\n Exposure includes architecture design, implementation via bash scripting and java using IntelliJ with Maven build automation, and JUnit testing. \n\n Project details are mentioned under the Jarvis Project Listing above. \n",
+      "duration": "MAR2021-present",
+      "title": "Data Engineer"
+    },
+    {
       "company": "Ontario Ministry of Health",
       "description": "\n\n Designed and developed a program to convert an excel file into an AODA (Accessibility for Ontarians with Disabilities) compliant excel file with TkInter as GUI and python openpyxl. Also designed use-cases for testing and providing ongoing maintenance/updates. \n\n Designed and developed a program to load external data files into DB with several menu options to manipulate data first before loading to Oracle using python pandas. \n\n Researched and provided proof of concepts and illustrations on providing predictive data models as a service to end users, as well as debugging / redesigning old VBA codes and assistance with JS implementation in Cognos. \n",
       "duration": "JAN2020-APR2020",

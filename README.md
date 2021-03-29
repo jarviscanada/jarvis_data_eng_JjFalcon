@@ -61,6 +61,15 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_JjFalcon](
 
 ## Professional Experiences
 
+**Data Engineer, Jarvis (MAR2021-present)**: 
+
+ Implemented multiple progressive projects in a scrum environment following the Software Development Life Cycle using the agile methodology. 
+
+ Exposure includes architecture design, implementation via bash scripting and java using IntelliJ with Maven build automation, and JUnit testing. 
+
+ Project details are mentioned under the Jarvis Project Listing above. 
+
+
 **Application Programmer – COOP, Ontario Ministry of Health (JAN2020-APR2020)**: 
 
  Designed and developed a program to convert an excel file into an AODA (Accessibility for Ontarians with Disabilities) compliant excel file with TkInter as GUI and python openpyxl. Also designed use-cases for testing and providing ongoing maintenance/updates. 

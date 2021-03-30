@@ -88,11 +88,11 @@ highlighted_projects:
     #project name
   - name: "Coop Work Projects: AODA Converter"
     #URL is optional
-    git_url: "https://github.com/f57c0n/JB-aodaExcel"
+    git_url: "https://github.com/f57c0n/gitPersonal/tree/master/projects_coop/project_AODAConverter"
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: "\n\nDeveloped a python application program that takes in an Excel file as input.  \nThe program reads and converts the file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant and saves it to a new Excel file. \n"
+    description: "\n\nDeveloped a python application program that takes in an Excel file as input.  \nThe program reads and converts the file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant and saves it to a new Excel file. \nThe program is built with a user friendly GUI with error checking using TKinter.\n"
   - name: "Coop Work Projects:  SQL Loader"
-    git_url: "https://github.com/f57c0n/JB-sqlLoader"
+    git_url: "https://github.com/f57c0n/gitPersonal/tree/master/projects_coop/project_SQLLoader"
     description: "\n\nDeveloped a python application program that takes in a CSV file as input.  \nThe program reads and analyze the file to detect column data types and remove invalid entries, and provide DML options to review the file and a commit option to create and insert data into a remote database.  \nIt also outputs a file with rows containing invalid entries.\n"
 #The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
 #The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).

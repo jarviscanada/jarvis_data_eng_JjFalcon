@@ -58,7 +58,7 @@ jarvis_projects:
     # The project description must start with an action verb (https://bit.ly/3guO98u)
     description: "\n
     Developed a Linux Cluster Monitoring Agent using bash and psql CLI in CentOS to collect the hardware specifications and monitor the resource usage of nodes connected to a Linux Cluster.
-    \n
+    \n\n
     Deployed the application using Docker which is used to create a PostgreSQL instance to manage both static and dynamic data collection stored in RDBMS that can later be queried to produce reports for resource planning."
   - name: "Core Java Apps"
     git_url: "/core_java"
@@ -90,10 +90,10 @@ highlighted_projects:
     #URL is optional
     git_url: "https://github.com/f57c0n/JB-aodaExcel"
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: "Developed an application program that takes in an Excel file as input.  The program reads and convert the file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant and saves it to a new Excel file. \n"
+    description: "\n\nDeveloped a python application program that takes in an Excel file as input.  \nThe program reads and converts the file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant and saves it to a new Excel file. \n"
   - name: "Coop Work Projects:  SQL Loader"
     git_url: "https://github.com/f57c0n/JB-sqlLoader"
-    description: "Developed an application program that takes in a CSV file as input.  The program reads and analyze the file to detect column data types and remove invalid entries, and provide DML options to review the file and a commit option to create and insert data into a remote database.  It also outputs a file with rows containing invalid entries.\n"
+    description: "\n\nDeveloped a python application program that takes in a CSV file as input.  \nThe program reads and analyze the file to detect column data types and remove invalid entries, and provide DML options to review the file and a commit option to create and insert data into a remote database.  \nIt also outputs a file with rows containing invalid entries.\n"
 #The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
 #The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).
 professional_experience:
@@ -161,7 +161,7 @@ education:
       - Professional Designation
   - school_name: SAIT Polytechnic
     duration: SEP2010-DEC2013
-    degree: Bachelor Applied Business Administration Accounting and IT
+    degree: Bachelor of Applied Business Administration Accounting and IT
     department: Business Administration
     awards_achievements:
       - Honours Degree

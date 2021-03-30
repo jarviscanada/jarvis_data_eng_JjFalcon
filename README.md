@@ -32,6 +32,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_JjFalcon](
 
 **Cluster Monitor** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/master/linux_sql)]: 
  Developed a Linux Cluster Monitoring Agent using bash and psql CLI in CentOS to collect the hardware specifications and monitor the resource usage of nodes connected to a Linux Cluster. 
+
  Deployed the application using Docker which is used to create a PostgreSQL instance to manage both static and dynamic data collection stored in RDBMS that can later be queried to produce reports for resource planning.
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/master/core_java)]:
@@ -52,10 +53,17 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_JjFalcon](
 
 
 ## Highlighted Projects
-**Coop Work Projects: AODA Converter** [[GitHub](https://github.com/f57c0n/JB-aodaExcel)]: Developed an application program that takes in an Excel file as input.  The program reads and convert the file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant and saves it to a new Excel file. 
+**Coop Work Projects: AODA Converter** [[GitHub](https://github.com/f57c0n/JB-aodaExcel)]: 
+
+Developed a python application program that takes in an Excel file as input.  
+The program reads and converts the file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant and saves it to a new Excel file. 
 
 
-**Coop Work Projects:  SQL Loader** [[GitHub](https://github.com/f57c0n/JB-sqlLoader)]: Developed an application program that takes in a CSV file as input.  The program reads and analyze the file to detect column data types and remove invalid entries, and provide DML options to review the file and a commit option to create and insert data into a remote database.  It also outputs a file with rows containing invalid entries.
+**Coop Work Projects:  SQL Loader** [[GitHub](https://github.com/f57c0n/JB-sqlLoader)]: 
+
+Developed a python application program that takes in a CSV file as input.  
+The program reads and analyze the file to detect column data types and remove invalid entries, and provide DML options to review the file and a commit option to create and insert data into a remote database.  
+It also outputs a file with rows containing invalid entries.
 
 
 
@@ -109,7 +117,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_JjFalcon](
 **CGA Canada (SEP2009-DEC2014)**, CPA, CGA Certification, Accounting
 - Professional Designation
 
-**SAIT Polytechnic (SEP2010-DEC2013)**, Bachelor Applied Business Administration Accounting and IT, Business Administration
+**SAIT Polytechnic (SEP2010-DEC2013)**, Bachelor of Applied Business Administration Accounting and IT, Business Administration
 - Honours Degree
 - GPA: 3.62/4.00
 

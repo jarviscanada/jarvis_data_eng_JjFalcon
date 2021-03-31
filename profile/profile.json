@@ -52,7 +52,7 @@
     },
     {
       "description": [
-        "Twitter App: Uses the MVC architecture and utilizes the Twitter RESTful API using the Apache HTTPComponents library to enable a Twitter user to fetch, post, and delete tweets.  Tested using Maven's JUnit testing and deployed via Docker.",
+        "Twitter App: Follows the MVC architecture and utilizes the Twitter RESTful API using the Apache HTTPComponents library to enable a Twitter user to fetch, post, and delete tweets.  Tested using Maven's JUnit testing and deployed via Docker.",
         "JDBC App: Demonstrates the DAO/DTO implementation of JDBC to a PostgreSQL RDBMS.  Implemented and tested basic CRUD and DML operations.",
         "Grep App: Simulates the Unix grep implementation that searches all files recursively from a given directory argument and outputs a file containing all the lines that match the given regex pattern argument.  Deployed via Docker."
       ],
@@ -99,7 +99,7 @@
   "professional_experience": [
     {
       "company": "Jarvis",
-      "description": " Implemented multiple progressive projects in a scrum environment following the Software Development Life Cycle using the agile methodology. Exposure includes architecture design, implementation via Bash scripts and Java using IntelliJ with Maven build automation, and JUnit testing. Project details are mentioned under the Jarvis Project Listing above. ",
+      "description": " Implemented multiple progressive projects in a scrum environment following the Software Development Life Cycle using the agile methodology. Exposure includes architecture design, implementation via Bash scripts and Java, using IntelliJ with Maven build automation, and JUnit testing. Project details are mentioned under the Jarvis Project Listing above. ",
       "duration": "MAR2021-present",
       "title": "Data Engineer"
     },
@@ -111,13 +111,13 @@
     },
     {
       "company": "Symcor Inc.",
-      "description": " Assisted in qualitative research to gain an understanding of the human needs involved in designing solutions and to help reframe the problem in human-centric ways through the design thinking process. Research work also included trends in solutions and the competitive landscape. Distilled information from the qualitative research to create design thinking personas and to generate multiple solution ideas for that persona. Adopted a hands-on approach in prototyping those ideas; including sketching and wireframes. Maintained and updated internal website built on PHP. Mostly front-end work. ",
+      "description": " Assisted in qualitative research to gain an understanding of the human needs involved in designing solutions and to help reframe the problem in human-centric ways through the design thinking process. Research work also included trends in solutions and the competitive landscape. Distilled information from the qualitative research to create design thinking personas and to generate multiple solution ideas for that persona. Adopted a hands-on approach in prototyping those ideas; including mock-ups and wireframes using Adobe XD. Maintained and updated internal website built on PHP. Mostly front-end work. ",
       "duration": "MAY2019-DEC2019",
       "title": "Software Development – COOP"
     },
     {
       "company": "Rogers Communication",
-      "description": " Accessed information in the databases to create data extracts and cleansing, transformations, and summaries by using Proc SQL scripting within SAS Enterprise, and provided these for marketing initiatives. Visualized data through excel dashboards utilizing pivot tables and charts which are then used in PowerPoint presentations to internal/external teams within the marketing and sales business unit. Reviewed data to look at patterns and unusual data, and perform sample testing and/or research to validate them. Constructed supervised and unsupervised churn models within SAS Miner and ensured their end-to-end performance validation. ",
+      "description": " Accessed information in the databases to create data extracts and cleansing, transformations, and summaries by using Proc SQL scripting within SAS Enterprise, and provided these for marketing initiatives. Visualized data through excel dashboards utilizing pivot tables and charts which are then used in PowerPoint presentations to internal/external teams within the marketing and sales business unit. Analyzed data to look at patterns and unusual data, and perform sample testing and/or research to validate them. Constructed supervised and unsupervised churn models within SAS Miner and ensured their end-to-end performance validation. ",
       "duration": "SEP2018-DEC2018",
       "title": "Predictive Modelling Analyst – COOP"
     }
@@ -150,5 +150,5 @@
       "Data Structures and Algorithms"
     ]
   },
-  "summary": " I completed my bachelor's degree in Computer Science at Ryerson University with a software engineering concentration in December 2020. The concentration allowed me to focus my academics and excelled on the entire Software Development cycle. It also exposed me to different Data Management Methodologies. Throughout my coop experiences, I have gained a great understanding and hands-on experience of the software development life cycle. This includes business requirements gathering,  designing solutions,  implementing and maintaining the solution in order to produce results that are meaningful to the organization. Additionally, through the Jarvis training program, I have had the opportunity to use additional technologies in manipulating and mining data. I am a quick learner, analytical thinker with a customer-centric approach to my work ethic. I am a firm believer that success at work means helping others be better at what they do. There is no greater motivation for me than to see my work or be a part of a team whose work has a direct impact on making other people's life easier. This is what excites me about the software industry. "
+  "summary": " I completed my bachelor's degree in Computer Science at Ryerson University with a software engineering concentration in December 2020. The concentration allowed me to focus my academics and excelled on the entire Software Development Life Cycle. It also exposed me to different Data Management Methodologies. Throughout my coop experiences, I have gained a great understanding and hands-on experience of the software development life cycle. This includes business requirements gathering,  designing solutions,  and implementing and maintaining the solution in order to produce results that are meaningful to the organization. Additionally, through the Jarvis training program, I have had the opportunity to use additional technologies in manipulating and mining data. I am a quick learner, analytical thinker with a customer-centric approach to my work ethic. I am a firm believer that success at work means helping others be better at what they do. There is no greater motivation for me than to see my work or be a part of a team whose work has a direct impact on making other people's life easier. This is what excites me about the software industry. "
 }

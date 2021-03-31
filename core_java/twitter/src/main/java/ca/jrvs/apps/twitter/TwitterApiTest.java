@@ -24,6 +24,7 @@ public class TwitterApiTest {
 
     // create an HTTP GET request
     String status = "Today is a good day";
+    //A UnicodeEscaper that escapes some set of Java characters using a UTF-8 based percent encoding scheme.
     PercentEscaper percentEscaper = new PercentEscaper("", false);
     HttpPost request =
         new HttpPost(

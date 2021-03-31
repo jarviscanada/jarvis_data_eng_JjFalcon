@@ -34,12 +34,12 @@
   "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_JjFalcon",
   "highlighted_projects": [
     {
-      "description": "Developed a python application program that converts an Excel file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant. \nThe program is built with a user friendly GUI using TKinter with error checking and uses the openpyxl library.",
+      "description": "Developed a python application program that converts an Excel file to be AODA [Accessibility for Ontarians with Disabilities Act] compliant. The program is built with a user friendly GUI using TKinter with error checking and uses the openpyxl library.",
       "git_url": "https://github.com/f57c0n/gitPersonal/tree/master/projects_coop/project_AODAConverter",
       "name": "Coop Work Projects: AODA Converter"
     },
     {
-      "description": "Developed a python application program that reads, analyzes and cleans a CSV file before migrating data to a remote RDBMS.  It provides DML options to review the file and a commit/rollback options before actual data migration.  It uses the panda and sqlite3 library.",
+      "description": "Developed a python application program that reads, analyzes and cleans a CSV file before migrating data to a remote RDBMS.  It provides DML options to review the file and a commit/rollback options before actual data migration.  The program uses the panda and sqlite3 library.",
       "git_url": "https://github.com/f57c0n/gitPersonal/tree/master/projects_coop/project_SQLLoader",
       "name": "Coop Work Projects:  SQL Loader"
     }

@@ -45,8 +45,7 @@ public class TwitterHttpHelper implements HttpHelper{
       consumer.sign(request);
       return httpClient.execute(request);
     } else {
-      //todo
-      return null;
+      throw new IllegalArgumentException("Unknown HTTP method: " + method.name());
     }
   }
 

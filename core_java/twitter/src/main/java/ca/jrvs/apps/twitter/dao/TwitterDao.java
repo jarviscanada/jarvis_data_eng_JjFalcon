@@ -24,7 +24,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
   // TWITTER resource urls
   private static final String TWITTER_BASE_URI = "https://api.twitter.com/1.1/";
   private static final String TWITTER_POST_URI = TWITTER_BASE_URI + "statuses/update.json";
-  private static final String TWITTER_SHOW_URI = TWITTER_BASE_URI + "statuses/show/";
+  private static final String TWITTER_SHOW_URI = TWITTER_BASE_URI + "statuses/show.json";
   private static final String TWITTER_DELETE_URI = TWITTER_BASE_URI + "statuses/destroy/";
 
   // TWITTER resource symbols
@@ -56,8 +56,9 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     try {
       // add tweet message
       // URLEncoder class contains static methods for converting a String to the <CODE>application/x-www-form-urlencoded</CODE> MIME format.
+      // POST https://api.twitter.com/1.1/statuses/update.json?status=MESSAGE
       tempUriInput =
-          QUERY_SYM + "status" + URLEncoder.encode(tweeterMessage, StandardCharsets.UTF_8.name());
+          QUERY_SYM + "status" + EQUAL + URLEncoder.encode(tweeterMessage, StandardCharsets.UTF_8.name());
       // add tweet location
       if (tweeterLocation != null) {
         float longitude = tweet.getLocation().getCoordinates()[0];
@@ -110,6 +111,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
 
   @Override
   public Tweet create(Tweet tweet) {
+    // POST https://api.twitter.com/1.1/statuses/update.json?status=MESSAGE
     URI tweeterUri;
     try {
       tweeterUri = getTweetUri(tweet);
@@ -125,12 +127,37 @@ public class TwitterDao implements CrdDao<Tweet, String> {
   }
 
   @Override
-  public Tweet findById(String s) {
-    return null;
+  public Tweet findById(String id) {
+    //GET https://api.twitter.com/1.1/statuses/show.json?id=210462857140252672
+    URI tweeterUri;
+    String tempUriInput = QUERY_SYM + "id" + EQUAL + id;
+    try {
+      tweeterUri = new URI(TWITTER_SHOW_URI + tempUriInput);
+    } catch (URISyntaxException e) {
+      throw new IllegalArgumentException("String could not be parsed as a URI", e);
+    }
+
+    // executes the HTTP Post request via httpHelper
+    HttpResponse response = httpHelper.httpGet(tweeterUri);
+
+    // validates and deserialize response to a Tweet object
+    return parseResponseBody(response, HTTP_OK);
   }
 
   @Override
-  public Tweet deleteById(String s) {
-    return null;
+  public Tweet deleteById(String id) {
+    //POST https://api.twitter.com/1.1/statuses/destroy/240854986559455234.json
+    URI tweeterUri;
+    String tempUriInput = id + ".json";
+    try {
+      tweeterUri = new URI(TWITTER_DELETE_URI + tempUriInput);
+    } catch (URISyntaxException e) {
+      throw new IllegalArgumentException("String could not be parsed as URI", e);
+    }
+    // executes the HTTP Post request via httpHelper
+    HttpResponse response = httpHelper.httpPost(tweeterUri);
+
+    // validates and deserialize response to a Tweet object
+    return parseResponseBody(response, HTTP_OK);
   }
 }

@@ -1,4 +1,4 @@
-package ca.jrvs.apps.twitter;
+package ca.jrvs.apps.twitter.util;
 
 import ca.jrvs.apps.twitter.dto.Company;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 
-public class JsonParser {
+public class SampleJsonParser {
 
   public static String toJason(Object object, boolean prettyJson, boolean includeNullValues) throws JsonProcessingException {
     ObjectMapper mapper = new ObjectMapper();

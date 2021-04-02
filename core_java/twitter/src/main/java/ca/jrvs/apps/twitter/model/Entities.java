@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Entities {
 
   @JsonProperty("hashtags")
-  private HashTag[] hashTags;
+  private HashTag[] hashTags = {};
   @JsonProperty("user_mentions")
-  private UserMention[] userMentions;
+  private UserMention[] userMentions = {};
 
   public HashTag[] getHashTags() {
     return hashTags;

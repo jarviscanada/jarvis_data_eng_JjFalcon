@@ -44,35 +44,38 @@ public class TwitterDao implements CrdDao<Tweet, String> {
   }
 
   private URI getTweetUri(Tweet tweet) throws URISyntaxException {
+    PercentEscaper percentEscaper = new PercentEscaper("", false);
     String tempUriInput = "";
     String tweeterMessage = tweet.getTweeterMessage();
-    UserMention[] tweeterMentions = tweet.getEntity().getUserMentions();
-    HashTag[] tweeterHashtags = tweet.getEntity().getHashTags();
+    String escapedTweeterMessage = percentEscaper.escape(tweeterMessage);
     Coordinates tweeterLocation = tweet.getLocation();
 
-    PercentEscaper percentEscaper = new PercentEscaper("", false);
+    /*
+    TODO: How to add tweeter mentions and hashtags to the message
+    UserMention[] tweeterMentions = tweet.getEntity().getUserMentions();
+    HashTag[] tweeterHashtags = tweet.getEntity().getHashTags();
+     */
 
-    // TODO: How to add tweeter mentions and hashtags to the message
     try {
-      // add tweet message
-      // URLEncoder class contains static methods for converting a String to the <CODE>application/x-www-form-urlencoded</CODE> MIME format.
       // POST https://api.twitter.com/1.1/statuses/update.json?status=MESSAGE
-      tempUriInput =
-          QUERY_SYM + "status" + EQUAL + URLEncoder.encode(tweeterMessage, StandardCharsets.UTF_8.name());
-      // add tweet location
+      // adds message
+      tempUriInput = QUERY_SYM + "status" + EQUAL + escapedTweeterMessage;
+      // adds tweet location
       if (tweeterLocation != null) {
-        float longitude = tweet.getLocation().getCoordinates()[0];
-        float latitude = tweet.getLocation().getCoordinates()[1];
-        tempUriInput += AMPERSAND + "long" + URLEncoder
-            .encode(Float.toString(longitude), StandardCharsets.UTF_8.name());
-        tempUriInput += AMPERSAND + "lat" + URLEncoder
-            .encode(Float.toString(latitude), StandardCharsets.UTF_8.name());
+        Double longitude = tweet.getLocation().getCoordinates()[0];
+        Double latitude = tweet.getLocation().getCoordinates()[1];
+
+        // URLEncoder class contains static methods for converting a String to the <CODE>application/x-www-form-urlencoded</CODE> MIME format.
+        tempUriInput += AMPERSAND + "long" + EQUAL + URLEncoder
+            .encode(Double.toString(longitude), StandardCharsets.UTF_8.name());
+        tempUriInput += AMPERSAND + "lat" + EQUAL + URLEncoder
+            .encode(Double.toString(latitude), StandardCharsets.UTF_8.name());
       }
     } catch (UnsupportedEncodingException e) {
       logger.error("Encoding not supported: " + StandardCharsets.UTF_8.name());
       throw new RuntimeException(e.getMessage());
     }
-    return new URI(TWITTER_POST_URI + percentEscaper.escape(tempUriInput));
+    return new URI(TWITTER_POST_URI + tempUriInput);
   }
 
   private Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode) {
@@ -137,7 +140,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
       throw new IllegalArgumentException("String could not be parsed as a URI", e);
     }
 
-    // executes the HTTP Post request via httpHelper
+    // executes the HTTP Get request via httpHelper
     HttpResponse response = httpHelper.httpGet(tweeterUri);
 
     // validates and deserialize response to a Tweet object

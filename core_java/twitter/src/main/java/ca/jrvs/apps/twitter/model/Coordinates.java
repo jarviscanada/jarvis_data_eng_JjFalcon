@@ -13,15 +13,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Coordinates {
 
   @JsonProperty("coordinates")
-  private float[] coordinates;
+  private Double[] coordinates;
   @JsonProperty("type")
   private String type;
 
-  public float[] getCoordinates() {
+  public Double[] getCoordinates() {
     return coordinates;
   }
 
-  public void setCoordinates(float[] coordinates) {
+  public void setCoordinates(Double[] coordinates) {
     this.coordinates = coordinates;
   }
 
@@ -32,4 +32,8 @@ public class Coordinates {
   public void setType(String type) {
     this.type = type;
   }
+
+  public Double getLatitude() { return coordinates[0];}
+  public Double getLongitude() { return coordinates[1];}
+
 }

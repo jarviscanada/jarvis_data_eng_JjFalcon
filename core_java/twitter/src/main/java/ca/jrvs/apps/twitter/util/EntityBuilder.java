@@ -7,11 +7,11 @@ import ca.jrvs.apps.twitter.model.UserMention;
 public class EntityBuilder {
 
     public static Entities buildEntity(HashTag[] hashtags, UserMention[] mentions){
-      Entities newEntity = new Entities();
-      newEntity.setHashTags(hashtags);
-      newEntity.setUserMentions(mentions);
+      Entities tempEntity = new Entities();
+      tempEntity.setHashTags(hashtags);
+      tempEntity.setUserMentions(mentions);
 
-      return newEntity;
+      return tempEntity;
     }
 
 }

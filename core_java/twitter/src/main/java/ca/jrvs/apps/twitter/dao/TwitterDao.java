@@ -2,9 +2,7 @@ package ca.jrvs.apps.twitter.dao;
 
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.model.Coordinates;
-import ca.jrvs.apps.twitter.model.HashTag;
 import ca.jrvs.apps.twitter.model.Tweet;
-import ca.jrvs.apps.twitter.model.UserMention;
 import ca.jrvs.apps.twitter.util.JsonParser;
 import com.google.gdata.util.common.base.PercentEscaper;
 import java.io.IOException;
@@ -43,6 +41,40 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     this.httpHelper = httpHelper;
   }
 
+  private Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode) {
+    Tweet tweet = null;
+
+    // checks response status
+    int status = response.getStatusLine().getStatusCode();
+    if (status != expectedStatusCode) {
+      try {
+        System.out.println(EntityUtils.toString(response.getEntity()));
+      } catch (IOException e) {
+        logger.error("Response has no entity");
+      }
+      throw new RuntimeException("Unexpected HTTP status: " + status);
+    }
+    if (response.getEntity() == null) {
+      throw new RuntimeException("Empty response body");
+    }
+
+    // converts response entity to string
+    String responseString;
+    try {
+      responseString = EntityUtils.toString(response.getEntity());
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to convert JSON to string");
+    }
+
+    // deserializes the string format of the response to a Tweet object
+    try {
+      tweet = JsonParser.toObjectFromJson(responseString, Tweet.class);
+    } catch (IOException e) {
+      throw new RuntimeException("Unable to convert JSON string to a Tweet object");
+    }
+    return tweet;
+  }
+
   private URI getTweetUri(Tweet tweet) throws URISyntaxException {
     PercentEscaper percentEscaper = new PercentEscaper("", false);
     String tempUriInput = "";
@@ -78,40 +110,6 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     return new URI(TWITTER_POST_URI + tempUriInput);
   }
 
-  private Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode) {
-    Tweet tweet = null;
-
-    // checks response status
-    int status = response.getStatusLine().getStatusCode();
-    if (status != expectedStatusCode) {
-      try {
-        System.out.println(EntityUtils.toString(response.getEntity()));
-      } catch (IOException e) {
-        logger.error("Response has no entity");
-      }
-      throw new RuntimeException("Unexpected HTTP status: " + status);
-    }
-    if (response.getEntity() == null) {
-      throw new RuntimeException("Empty response body");
-    }
-
-    // converts response entity to string
-    String responseString;
-    try {
-      responseString = EntityUtils.toString(response.getEntity());
-    } catch (IOException e) {
-      throw new RuntimeException("Failed to convert JSON to string");
-    }
-
-    // deserializes the string format of the response to a Tweet object
-    try {
-      tweet = JsonParser.toObjectFromJson(responseString, Tweet.class);
-    } catch (IOException e) {
-      throw new RuntimeException("Unable to convert JSON string to a Tweet object");
-    }
-    return tweet;
-  }
-
   @Override
   public Tweet create(Tweet tweet) {
     // POST https://api.twitter.com/1.1/statuses/update.json?status=MESSAGE
@@ -131,7 +129,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
 
   @Override
   public Tweet findById(String id) {
-    //GET https://api.twitter.com/1.1/statuses/show.json?id=210462857140252672
+    // GET https://api.twitter.com/1.1/statuses/show.json?id=210462857140252672
     URI tweeterUri;
     String tempUriInput = QUERY_SYM + "id" + EQUAL + id;
     try {

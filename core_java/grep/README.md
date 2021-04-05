@@ -14,8 +14,8 @@ and make it more readable.
 ## Quick Start
 The application can be run via Docker
 ```
-   $ docker pull jjfalcon/javaGrep  
-   $ docker run --rm -v {rootPath} -v {outFile} jjfalcon/javaGrep {regex} {rootPath} {outFile}
+   $ docker pull jjfalcon/grep
+   $ docker run --rm -v {rootPath} -v {outFile} jjfalcon/grep {regex} {rootPath} {outFile}
 ```
 # Implementation
 ## JavaGrep Pseudocode
@@ -38,10 +38,12 @@ This program will run slowly if a file is large and contains structured data.
 Consider advance search algorithms to handle complex files.
 
 # Test
-Tested from the local machine using 2 files TestCase01.txt and TestCase02.txt.
+Tested from the local machine using 2 files grepTestCase01.txt and grepTestCase02.txt.
 Both file contains lines with the target text "dog" both as a standalone and part of a word ie; hotdog.
-Ran the program manually via CLI and confirmed expected test results.
+Ran the program via the Docker image and confirmed expected test results.
 
+/data:  contains the test data
+/log: contains the result
 
 # Deployment
 The application was bundled using Docker and pushed to Docker hub.
@@ -50,4 +52,4 @@ The image can be downloaded to a local machine and ran in a container.
 # Improvement
 - Inclusion of filename + line number on matched lines
 - Option to specify file types and matching search algorithms
-- Avoid any recursive implementation where possible
+- To address possible memory usage issues, files containing a huge amount of lines can be batched for processing

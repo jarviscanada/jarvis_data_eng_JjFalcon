@@ -10,7 +10,9 @@ import ca.jrvs.apps.twitter.util.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TwitterCLIApp {
 
   private static final String CONSUMER_KEY = System.getenv("consumerKey");

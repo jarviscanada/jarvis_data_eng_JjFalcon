@@ -1,0 +1,6 @@
+This is test case 02:
+Line 11: going to walk the dog.
+Line 12: and take a break at the park.
+Line 13: maybe check out some plants.
+Line 14: and go get hotdog for lunch.
+Line 15: the dog should be very happy.

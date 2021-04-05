@@ -1,5 +1,7 @@
 package ca.jrvs.apps.twitter;
 
+import ca.jrvs.apps.twitter.dao.TwitterDao;
+import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.service.TwitterService;
 import ca.jrvs.apps.twitter.util.TweetBuilder;
@@ -32,11 +34,11 @@ public class TwitterViewer {
 
     Tweet tweet = TweetBuilder.buildTweet(tweeterMessage, latitude, longitude);
 
-    //TwitterHttpHelper twitterHttpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
-    //TwitterDao twitterDao = new TwitterDao(twitterHttpHelper);
+    TwitterHttpHelper twitterHttpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
+    TwitterDao twitterDao = new TwitterDao(twitterHttpHelper);
     // tests create method
     // Tweet returnedTweet = twitterDao.create(tweet);
-    TwitterService twitterService = new TwitterService();
+    TwitterService twitterService = new TwitterService(twitterDao);
     Tweet returnedTweet = twitterService.postTweet(tweet);
 
     // gets ID to delete later

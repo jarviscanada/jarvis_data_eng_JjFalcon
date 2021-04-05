@@ -1,24 +1,27 @@
 package ca.jrvs.apps.twitter.service;
 
 import ca.jrvs.apps.twitter.dao.TwitterDao;
-import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
 import ca.jrvs.apps.twitter.model.Coordinates;
 import ca.jrvs.apps.twitter.model.Tweet;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class TwitterService implements Service {
-
-  private static final String CONSUMER_KEY = System.getenv("consumerKey");
-  private static final String CONSUMER_SECRET = System.getenv("consumerSecret");
-  private static final String ACCESS_TOKEN = System.getenv("accessToken");
-  private static final String TOKEN_SECRET = System.getenv("tokenSecret");
 
   private final int TWITTER_LIMIT = 280;
   private final Double LATITUDE_MAX = 90.0000;
   private final Double LONGITUDE_MAX = 180.0000;
   private final Double[] NORTH_POLE = {90.0000, 135.0000};
+
+  private TwitterDao twitterDao;
+
+  /* MOVE ALL TO MAIN and replace with a constructor
+  private static final String CONSUMER_KEY = System.getenv("consumerKey");
+  private static final String CONSUMER_SECRET = System.getenv("consumerSecret");
+  private static final String ACCESS_TOKEN = System.getenv("accessToken");
+  private static final String TOKEN_SECRET = System.getenv("tokenSecret");
 
   private TwitterHttpHelper twitterHttpHelper;
   private TwitterDao twitterDao;
@@ -26,6 +29,12 @@ public class TwitterService implements Service {
   private void setUp(){
     TwitterHttpHelper twitterHttpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
     twitterDao = new TwitterDao(twitterHttpHelper);
+  }
+  */
+
+  @Autowired
+  public TwitterService(TwitterDao twitterDao) {
+    this.twitterDao = twitterDao;
   }
 
   private void validateTweet(Tweet tweet){
@@ -63,14 +72,14 @@ public class TwitterService implements Service {
 
   @Override
   public Tweet postTweet(Tweet tweet) {
-    setUp();
+    //setUp();
     validateTweet(tweet);
     return (Tweet) twitterDao.create(tweet);
   }
 
   @Override
   public Tweet showTweet(String id, String[] fields) {
-    setUp();
+    //setUp();
     if (isValidID(id)) {
       return (Tweet) twitterDao.findById(id);
     } else {
@@ -81,7 +90,7 @@ public class TwitterService implements Service {
 
   @Override
   public List<Tweet> deleteTweets(String[] ids) {
-    setUp();
+    //setUp();
     List<Tweet> deletedTweets = new ArrayList<>();
     for (String id: ids){
       if (isValidID(id)) {

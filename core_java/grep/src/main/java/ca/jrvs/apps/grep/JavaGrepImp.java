@@ -154,20 +154,5 @@ public class JavaGrepImp implements JavaGrep {
     outputFile = outFile;
   }
 
-  public static void main(String[] args) {
-    Logger logger = LoggerFactory.getLogger("Main");
-    if (args.length != 3) {
-      throw new IllegalArgumentException("Insufficient Arguments");
-    }
-    JavaGrepImp javaGrep = new JavaGrepImp();
-    javaGrep.setRegex(args[0]);
-    javaGrep.setRootPath(args[1]);
-    javaGrep.setOutFile(args[2]);
-
-    try {
-      javaGrep.process();
-    } catch (IOException e) {
-      logger.info("ERROR: " + e.getMessage());
-    }
-  }
+  // move main method to a viewer
 }

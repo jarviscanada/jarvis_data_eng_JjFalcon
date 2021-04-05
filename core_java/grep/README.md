@@ -42,8 +42,10 @@ Tested from the local machine using 2 files grepTestCase01.txt and grepTestCase0
 Both file contains lines with the target text "dog" both as a standalone and part of a word ie; hotdog.
 Ran the program via the Docker image and confirmed expected test results.
 
-/data:  contains the test data
-/log: contains the result
+[/data:](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/develop/core_java/grep/data)
+contains the test data  
+[/log:](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/develop/core_java/grep/log)
+contains the output
 
 # Deployment
 The application was bundled using Docker and pushed to Docker hub.

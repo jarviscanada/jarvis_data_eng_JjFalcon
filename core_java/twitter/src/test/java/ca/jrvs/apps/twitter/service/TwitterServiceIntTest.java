@@ -32,7 +32,7 @@ public class TwitterServiceIntTest {
 
   @Test
   public void postTweet() throws JsonProcessingException {
-    String tweeterMessage = "It's a marvelous day #agent009 @flyehye";
+    String tweeterMessage = "It's a marvelous day #agent777";
     double lat = 43.595310;
     double lon = -79.640579;
     Tweet newTweet = TweetBuilder.buildTweet(tweeterMessage, lat, lon);
@@ -40,22 +40,21 @@ public class TwitterServiceIntTest {
     Tweet returnedTweet = twitterService.postTweet(newTweet);
     System.out.println(JsonParser.toJason(returnedTweet, true, true));
 
-    assertEquals("flyehye", returnedTweet.getEntity().getUserMentions()[0].getScreenName());
+    assertEquals("agent777", returnedTweet.getEntity().getHashTags()[0].getHashTagText());
   }
 
   @Test
   public void showTweet() throws JsonProcessingException {
-    String id = "1378020791854448640";
+    String id = "1379420134557687809";
     Tweet returnedTweet = twitterService.showTweet(id, null);
     System.out.println(JsonParser.toJason(returnedTweet, true, true));
 
     assertEquals(id, returnedTweet.getIdString());
-    assertEquals("flyehye", returnedTweet.getEntity().getUserMentions()[0].getScreenName());
   }
 
   @Test
   public void deleteTweets() throws JsonProcessingException {
-    String[] ids = {"1378020791854448640"};
+    String[] ids = {"1379460080953929731", "1379460014767800320"};
     List<Tweet> returnedTweets = twitterService.deleteTweets(ids);
     //System.out.println(returnedTweets.forEach(JsonParser::toJason(this, true, true));
   }

@@ -55,16 +55,13 @@ public class TwitterController implements Controller {
 
   @Override
   public List<Tweet> deleteTweet(String[] args) {
-    System.out.println("USAGE: TwitterCLIApp delete \"tweetID1\" \"tweetID12\" .. \"tweetIDn\\");
+    System.out.println("USAGE: TwitterCLIApp delete \"[id1,id2,..]\" ");
     int argumentLength = args.length;
-    if (argumentLength < 2){
+    if (argumentLength != 2){
       throw new IllegalArgumentException("Missing Argument");
     }
-
-    String[] deleteIDs  = new String[argumentLength-1];
-    for (int i = 1; i < argumentLength-1; i++) {
-      deleteIDs[i-1] = args[1];
-    }
+    String ids = args[1];
+    String[] deleteIDs = ids.split(COMMA);
 
     return twitterService.deleteTweets(deleteIDs);
   }

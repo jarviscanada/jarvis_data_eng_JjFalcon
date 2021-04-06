@@ -43,7 +43,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     this.httpHelper = httpHelper;
   }
 
-  private Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode) {
+  public Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode) {
     Tweet tweet = null;
 
     // checks response status

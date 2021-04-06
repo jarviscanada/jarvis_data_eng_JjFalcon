@@ -1,7 +1,6 @@
 package ca.jrvs.apps.twitter.service;
 
 import ca.jrvs.apps.twitter.dao.TwitterDao;
-import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
 import ca.jrvs.apps.twitter.model.Coordinates;
 import ca.jrvs.apps.twitter.model.Tweet;
 import java.util.ArrayList;
@@ -31,12 +30,13 @@ public class TwitterService implements Service {
     TwitterHttpHelper twitterHttpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
     twitterDao = new TwitterDao(twitterHttpHelper);
   }
-  */
+   */
 
   @Autowired
   public TwitterService(TwitterDao twitterDao) {
     this.twitterDao = twitterDao;
   }
+
 
   private void validateTweet(Tweet tweet){
     String tempMessage = "";

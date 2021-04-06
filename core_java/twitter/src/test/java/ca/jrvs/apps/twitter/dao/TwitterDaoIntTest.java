@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpMethod;
 
-public class TwitterDaoTest {
+public class TwitterDaoIntTest {
 
   private TwitterDao twitterDao;
 
@@ -34,7 +34,7 @@ public class TwitterDaoTest {
 
   @Test
   public void create() throws Exception {
-    String tweeterMessage = "It's a marvelous day #agent007 @flyehye";
+    String tweeterMessage = "It's a marvelous day #agent003 @flyehye";
     double lat = 43.595310;
     double lon = -79.640579;
     Tweet newTweet = TweetBuilder.buildTweet(tweeterMessage, lat, lon);
@@ -52,12 +52,13 @@ public class TwitterDaoTest {
 
     // test if the object is properly created
     System.out.println(JsonParser.toJason(newTweet, true, true));
-
     assertEquals(tweeterMessage, newTweet.getTweeterMessage());
     assertNotNull(newTweet.getLocation());
     assertEquals(lat, newTweet.getLocation().getLatitude(),0);
     assertEquals(lon, newTweet.getLocation().getLongitude(),0);
 
+    Tweet returnedTweet = twitterDao.create(newTweet);
+    System.out.println(JsonParser.toJason(returnedTweet, true, true));
   }
 
   @Test
@@ -71,5 +72,12 @@ public class TwitterDaoTest {
     assertEquals("flyehye", returnedTweet.getEntity().getUserMentions()[0].getScreenName());
   }
 
-  // deletebyID is the same as findById
+  @Test
+  public void deleteByID() throws Exception {
+    Tweet returnedTweet = twitterDao.deleteById("1379285061682532352");
+    System.out.println(JsonParser.toJason(returnedTweet, true, true));
+
+    assertEquals("1379285061682532352", returnedTweet.getIdString());
+    assertEquals("flyehye", returnedTweet.getEntity().getUserMentions()[0].getScreenName());
+  }
 }

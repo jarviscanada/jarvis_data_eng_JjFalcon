@@ -6,7 +6,7 @@ The program also provides different sample codes to demonstrate CRUD operations 
 The program implements the DAO pattern to manage the connection with the data source to obtain and store data and
 utilizes the Repository Design pattern to manage the business objects.
 
-# Implementaiton
+# Implementation
 ## ER Diagram
 ![ER DIAGRAM](./assets/schema.jpg)
 

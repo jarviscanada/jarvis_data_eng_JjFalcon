@@ -3,7 +3,7 @@
 The JavaGrep is a tool that simulates the GNU grep command that searches all
 files recursively from a given directory for lines that match the given regex pattern
 and outputs them to a file.  This is achieved using Java's Regex classes (Pattern and Matcher),
-the java.nio library.
+and the java.nio library.
 
 It utilizes the stream libraries to process the collection of objects in the program and
 demonstrates the use of intermediate and terminal operations.
@@ -23,8 +23,8 @@ The application can be run via Docker
 Recursively go through the root directory, get a list of files in it.
 For each valid file found,
     For each line in the file,
-        Check if line contains the Regex pattern,
-        If the  pattern is found, write the line to the output file.
+        Check if the line contains the Regex pattern,
+        If the pattern is found, write the line to the output file.
 ```
 
 ## Performance Issues
@@ -35,11 +35,11 @@ Consider a non-recursive implementation to avoid the issue.
 
 This program assumes that each file contains simple text lines.  
 This program will run slowly if a file is large and contains structured data.
-Consider advance search algorithms to handle complex files.
+Consider advanced search algorithms to handle complex files.
 
 # Test
 Tested from the local machine using 2 files grepTestCase01.txt and grepTestCase02.txt.
-Both file contains lines with the target text "dog" both as a standalone and part of a word ie; hotdog.
+Both files contain lines with the target text "dog" both as a standalone and part of a word ie; hotdog.
 Ran the program via the Docker image and confirmed expected test results.
 
 [/data:](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/develop/core_java/grep/data)
@@ -55,3 +55,4 @@ The image can be downloaded to a local machine and ran in a container.
 - Inclusion of filename + line number on matched lines
 - Option to specify file types and matching search algorithms
 - To address possible memory usage issues, files containing a huge amount of lines can be batched for processing
+

@@ -28,13 +28,12 @@ For each valid file found,
 ```
 
 ## Performance Issues
-One of the files uses recursion to search for files.  
-This implementation may cause a stack-overflow if a given directory is deep and contains
-a huge amount of files.  
-Consider a non-recursive implementation to avoid the issue.
+The program stores all the lines from all the files into a single collection.
+If there are a huge amount of files in the directory each containing huge content that single collection can get very big.  
+Consider a more efficient way to store those lines.
 
 This program assumes that each file contains simple text lines.  
-This program will run slowly if a file is large and contains structured data.
+This program will run slowly if a file is large and contains structured data.  
 Consider advanced search algorithms to handle complex files.
 
 # Test

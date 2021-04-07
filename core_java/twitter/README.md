@@ -71,7 +71,6 @@ This app uses a simplified version of the Tweet Model as follows:
 
 The Objects are modelled following this sample JSON output.
  ```
-```json
 {
    "created_at":"Mon Feb 18 21:24:39 +0000 2019",
    "id":1097607853932564480,
@@ -138,7 +137,6 @@ through the constructor using the @Autowired annotation.
 
 
 # Test
-How did you test you app using Junit and mockito?
 The development implemented both Unit and Integration testing.
 
 Mockito facilitated unit testing by creating and configuring Mock objects 

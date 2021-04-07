@@ -51,9 +51,10 @@ TwitterService
   With this particular app, it is responsible for validating the tweet's text message and coordinates.
 
 TwitterDao
-- The model in MVC responsible for all data-related logic such as 
-  how data is being transferred between the View and Controller components.   
-  More importantly, it is responsible for modeling the data to and from Twitter and
+- Related to model in MVC, it is responsible for all data-related logic such as 
+  how data is being transferred between the View and Controller components.
+  More importantly, it is responsible for modeling the data 
+  by utilizing the actual Model objects, to and from Twitter and
   utilizes the HttpHelper for its transport.
 
 TwitterHttpHelper

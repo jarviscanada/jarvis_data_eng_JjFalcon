@@ -46,8 +46,8 @@ TwitterController
   to retrieve the corresponding business logic, acquire the results, and pass it to the VIEW for rendering. 
 
 TwitterService
-- The business logic of the app responsible for determining how data is created, altered, showed, or stored.
-  It provides a set of rules to validate objects and how each interacts with the other.
+- The business logic of the app responsible for determining how data is created, altered, showed, or stored using the MODEL objects.
+  It also provides a set of rules to validate objects and how each interacts with the other.
   With this particular app, it is responsible for validating the tweet's text message and coordinates.
 
 TwitterDao
@@ -58,8 +58,8 @@ TwitterDao
   utilizes the HttpHelper for its transport.
 
 TwitterHttpHelper
-- As the name suggests, it handles the HTTP communication using the "apache.http" Library between the app and the Twitter API.
-  It is responsible for authorization using the "oauth" library and for the actual transport [sending and receiving] of data. 
+- As the name suggests, it handles the HTTP communication using the "apache.http" library between the app and the Twitter API.
+  It is also responsible for authorization using the "oauth" library and for the actual transport [sending and receiving] of data. 
   
 
 ## Models

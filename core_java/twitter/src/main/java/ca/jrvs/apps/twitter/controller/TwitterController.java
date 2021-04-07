@@ -1,7 +1,7 @@
 package ca.jrvs.apps.twitter.controller;
 
 import ca.jrvs.apps.twitter.model.Tweet;
-import ca.jrvs.apps.twitter.service.TwitterService;
+import ca.jrvs.apps.twitter.service.Service;
 import ca.jrvs.apps.twitter.util.TweetBuilder;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ public class TwitterController implements Controller {
 
   private static final String COORD_SEP = ":";
   private static final String COMMA = ",";
-  private TwitterService twitterService;
+  private Service twitterService;
 
   @Autowired
-  public TwitterController(TwitterService twitterService) {
+  public TwitterController(Service twitterService) {
     this.twitterService = twitterService;
   }
 
@@ -31,6 +31,7 @@ public class TwitterController implements Controller {
 
     Double latitude = null;
     Double longitude = null;
+
     try {
       latitude = Double.parseDouble(coordinates[0]);
       longitude = Double.parseDouble(coordinates[1]);

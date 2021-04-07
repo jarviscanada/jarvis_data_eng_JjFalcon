@@ -1,6 +1,6 @@
 package ca.jrvs.apps.twitter.service;
 
-import ca.jrvs.apps.twitter.dao.TwitterDao;
+import ca.jrvs.apps.twitter.dao.CrdDao;
 import ca.jrvs.apps.twitter.model.Coordinates;
 import ca.jrvs.apps.twitter.model.Tweet;
 import java.util.ArrayList;
@@ -10,9 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @org.springframework.stereotype.Service
 public class TwitterService implements Service {
 
-  private TwitterDao twitterDao;
+  private CrdDao<Tweet, String> twitterDao;
 
-  /* MOVE ALL TO MAIN and replace with a constructor to implement spring!
+
+  /* MOVE ALL TO MAIN and replace with a constructor to pass dependency as a spring implementation!
   private static final String CONSUMER_KEY = System.getenv("consumerKey");
   private static final String CONSUMER_SECRET = System.getenv("consumerSecret");
   private static final String ACCESS_TOKEN = System.getenv("accessToken");
@@ -28,7 +29,7 @@ public class TwitterService implements Service {
    */
 
   @Autowired
-  public TwitterService(TwitterDao twitterDao) {
+  public TwitterService(CrdDao<Tweet, String> twitterDao) {
     this.twitterDao = twitterDao;
   }
 
@@ -46,7 +47,7 @@ public class TwitterService implements Service {
       String tempMessage = tweeterMessage.substring(0,TWITTER_LIMIT-1);
       tweet.setTweeterMessage(tempMessage);
     }
-    // joke
+    // for fun.
     if (tweet.getLocation().getCoordinates() != null) {
       if (Math.abs(latitude) > LATITUDE_MAX || Math.abs(longitude) > LONGITUDE_MAX) {
         // sets location as if Santa sent it :)

@@ -41,7 +41,7 @@ TwitterCliApp
   returning the VIEW of the corresponding results in pretty JSON.
 
 TwitterController
-- The controller in MVC responsible for controlling the flow of the program and acts as an interface between the View and Model components.
+- The controller in MVC responsible for controlling the flow of the program [HTTP requests] and acts as an interface between the View and Model components.
   It calls Service Component based on user input and option
   to retrieve the corresponding business logic, acquire the results, and pass it to the VIEW for rendering. 
 

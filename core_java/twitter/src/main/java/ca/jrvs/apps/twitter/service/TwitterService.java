@@ -1,7 +1,6 @@
 package ca.jrvs.apps.twitter.service;
 
-import ca.jrvs.apps.twitter.dao.TwitterDao;
-import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
+import ca.jrvs.apps.twitter.dao.CrdDao;
 import ca.jrvs.apps.twitter.model.Coordinates;
 import ca.jrvs.apps.twitter.model.Tweet;
 import java.util.ArrayList;
@@ -11,14 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @org.springframework.stereotype.Service
 public class TwitterService implements Service {
 
-  private final int TWITTER_LIMIT = 280;
-  private final Double LATITUDE_MAX = 90.0000;
-  private final Double LONGITUDE_MAX = 180.0000;
-  private final Double[] NORTH_POLE = {90.0000, 135.0000};
+  private CrdDao<Tweet, String> twitterDao;
 
-  private TwitterDao twitterDao;
 
-  /* MOVE ALL TO MAIN and replace with a constructor
+  /* MOVE ALL TO MAIN and replace with a constructor to pass dependency as a spring implementation!
   private static final String CONSUMER_KEY = System.getenv("consumerKey");
   private static final String CONSUMER_SECRET = System.getenv("consumerSecret");
   private static final String ACCESS_TOKEN = System.getenv("accessToken");
@@ -31,23 +26,28 @@ public class TwitterService implements Service {
     TwitterHttpHelper twitterHttpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
     twitterDao = new TwitterDao(twitterHttpHelper);
   }
-  */
+   */
 
   @Autowired
-  public TwitterService(TwitterDao twitterDao) {
+  public TwitterService(CrdDao<Tweet, String> twitterDao) {
     this.twitterDao = twitterDao;
   }
 
+
   private void validateTweet(Tweet tweet){
-    String tempMessage = "";
+    final int TWITTER_LIMIT = 280;
+    final Double LATITUDE_MAX = 90.0000;
+    final Double LONGITUDE_MAX = 180.0000;
+    final Double[] NORTH_POLE = {90.0000, 135.0000};
+
     String tweeterMessage = tweet.getTweeterMessage();
     Double latitude = tweet.getLocation().getLatitude();
     Double longitude = tweet.getLocation().getLongitude();
     if (tweeterMessage.length() > TWITTER_LIMIT){
-      tempMessage = tweeterMessage.substring(0,TWITTER_LIMIT-1);
+      String tempMessage = tweeterMessage.substring(0,TWITTER_LIMIT-1);
       tweet.setTweeterMessage(tempMessage);
     }
-    // joke
+    // for fun.
     if (tweet.getLocation().getCoordinates() != null) {
       if (Math.abs(latitude) > LATITUDE_MAX || Math.abs(longitude) > LONGITUDE_MAX) {
         // sets location as if Santa sent it :)
@@ -61,28 +61,24 @@ public class TwitterService implements Service {
   }
 
   private boolean isValidID(String id){
-    long validID;
-    try {
-      validID = Long.parseLong(id); {
-      }
-    } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("Not a valid ID", e);
-    };
-    return (!(validID > Long.MAX_VALUE) && (id instanceof String));
+    if (!id.matches("[0-9]+")) {
+      throw new IllegalArgumentException("ID:" + id + "must only contain numbers");
+    }
+    return true;
   }
 
   @Override
   public Tweet postTweet(Tweet tweet) {
     //setUp();
     validateTweet(tweet);
-    return (Tweet) twitterDao.create(tweet);
+    return twitterDao.create(tweet);
   }
 
   @Override
   public Tweet showTweet(String id, String[] fields) {
     //setUp();
     if (isValidID(id)) {
-      return (Tweet) twitterDao.findById(id);
+      return twitterDao.findById(id);
     } else {
       throw new IllegalArgumentException("Not a valid ID");
     }

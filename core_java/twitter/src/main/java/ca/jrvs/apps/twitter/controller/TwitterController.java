@@ -1,7 +1,7 @@
 package ca.jrvs.apps.twitter.controller;
 
 import ca.jrvs.apps.twitter.model.Tweet;
-import ca.jrvs.apps.twitter.service.TwitterService;
+import ca.jrvs.apps.twitter.service.Service;
 import ca.jrvs.apps.twitter.util.TweetBuilder;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ public class TwitterController implements Controller {
 
   private static final String COORD_SEP = ":";
   private static final String COMMA = ",";
-  private TwitterService twitterService;
+  private Service twitterService;
 
   @Autowired
-  public TwitterController(TwitterService twitterService) {
+  public TwitterController(Service twitterService) {
     this.twitterService = twitterService;
   }
 
@@ -31,6 +31,7 @@ public class TwitterController implements Controller {
 
     Double latitude = null;
     Double longitude = null;
+
     try {
       latitude = Double.parseDouble(coordinates[0]);
       longitude = Double.parseDouble(coordinates[1]);
@@ -55,16 +56,13 @@ public class TwitterController implements Controller {
 
   @Override
   public List<Tweet> deleteTweet(String[] args) {
-    System.out.println("USAGE: TwitterCLIApp delete \"tweetID1\" \"tweetID12\" .. \"tweetIDn\\");
+    System.out.println("USAGE: TwitterCLIApp delete \"[id1,id2,..]\" ");
     int argumentLength = args.length;
-    if (argumentLength < 2){
+    if (argumentLength != 2){
       throw new IllegalArgumentException("Missing Argument");
     }
-
-    String[] deleteIDs  = new String[argumentLength-1];
-    for (int i = 1; i < argumentLength-1; i++) {
-      deleteIDs[i-1] = args[1];
-    }
+    String ids = args[1];
+    String[] deleteIDs = ids.split(COMMA);
 
     return twitterService.deleteTweets(deleteIDs);
   }

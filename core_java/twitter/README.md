@@ -21,7 +21,7 @@ Testing was carried out using Mockito and JUnit, packaged via Maven, and deploye
   Usage:
   TwitterApp post|show|delete [options]
   
-  $ docker pull jjfalcon/grep
+  $ docker pull jjfalcon/twitter
   $ docker run --rm \
   -e consumerKey = YOUR_VALUE \
   -e consumerSecret = YOUR_VALUE \

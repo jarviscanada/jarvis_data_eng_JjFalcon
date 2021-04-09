@@ -1,6 +1,0 @@
-This is test case 01:
-Line 01: contains dog.
-Line 02: doesn't contain a cat.
-Line 03: another dog is running
-Line 04: but this cat is not happy.
-Line 05: the cat ate this dog.

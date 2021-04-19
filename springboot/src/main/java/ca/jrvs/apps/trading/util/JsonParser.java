@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 
@@ -22,8 +23,11 @@ public class JsonParser {
 
   public static <T> T toObjectFromJson(String json, Class clazz) throws IOException {
     ObjectMapper mapper = new ObjectMapper();
+    mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
     mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    return (T) mapper.readValue(json, clazz);
+    ObjectReader reader = mapper.reader().withRootName("quote");
+    // return (T) mapper.readValue(json, clazz);
+    return (T) reader.forType(clazz).readValue(json);
   }
 
 }

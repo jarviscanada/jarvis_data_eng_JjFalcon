@@ -4,9 +4,8 @@ import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import ca.jrvs.apps.trading.util.JsonParser;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.StringJoiner;
@@ -16,14 +15,12 @@ import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.data.repository.CrudRepository;
 
-// String = ID
-public class MarketDataDao implements CrudRepository<IexQuote, String> {
+public class MarketDataDaoTemp implements CrudRepository<IexQuote, String> {
 
   // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl,msft&types=quote&token={YOUR_TOKEN}
   private static final String IEX_BATCH_PATH = "stock/market/batch?symbols=";
@@ -32,7 +29,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
   private HttpClientConnectionManager httpClientConnectionManager;
   private String token;
 
-  public MarketDataDao(
+  public MarketDataDaoTemp(
       HttpClientConnectionManager httpClientConnectionManager, MarketDataConfig marketDataConfig) {
     this.httpClientConnectionManager = httpClientConnectionManager;
     IEX_BATCH_URL = marketDataConfig.getHost() + IEX_BATCH_PATH;
@@ -45,12 +42,13 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
    * @param ticker to get quote of
    * @throws IllegalArgumentException if a give ticker is invalid
    * @throws DataRetrievalFailureException if HTTP request failed
-   * @return IexQuote if it exists
+   * @return the quote of the given ticker
    */
   @Override
   public Optional<IexQuote> findById(String ticker) {
+    // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl&types=quote&token={YOUR_TOKEN}
     Optional<IexQuote> iexQuote;
-    List<IexQuote> quotes = findAllById(Collections.singletonList(ticker));
+    List<IexQuote> quotes = (List<IexQuote>) findAllById(Collections.singletonList(ticker));
 
     if (quotes.size() == 0) {
       return Optional.empty();
@@ -62,20 +60,12 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
     return iexQuote;
   }
 
-  /**
-   * Gets quotes from Iex.
-   *
-   * @param tickers is a list of tickers
-   * @return a list of IexQuote objects
-   * @throws IllegalArgumentException if any ticker is invalid or tickers is empty
-   */
   @Override
-  public List<IexQuote> findAllById(Iterable<String> tickers) {
-    List<IexQuote> quotes = new ArrayList<>();
+  public Iterable<IexQuote> findAllById(Iterable<String> tickers) {
     String tempUrl = IEX_BATCH_URL;
 
     // separate each tickers with a comma
-    // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl,msft&types=quote&token={YOUR_TOKEN})
+    // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl,msft&types=quote&token={YOUR_TOKEN}
     StringJoiner joiner = new StringJoiner(",");
 
     for (String ticker : tickers) {
@@ -83,68 +73,38 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
     }
 
     tempUrl += joiner.toString() + "&types=quote" + "&token=" + token;
-
-    // HTTP response
-    String response =
-        executeHttpGet(tempUrl).orElseThrow(() -> new IllegalArgumentException("Invalid ticker"));
-
-    // Array of JSON documents
-    JSONObject IexQuotesJson = new JSONObject(response);
-
-    // Get number of documents
-    if (IexQuotesJson.length() == 0) {
-      throw new IllegalArgumentException("Invalid ticker");
-    }
-
-    return parseResponseBody(IexQuotesJson);
+    HttpResponse response = executeHttpGet(tempUrl);
+    return Arrays.asList(
+        parseResponseBody(response, IexQuote[].class)
+            .orElseThrow(
+                () -> new IllegalArgumentException("One or more Symbols were not found on IEX")));
   }
 
-  private List<IexQuote> parseResponseBody(JSONObject jsonObject) {
-    // iterate and convert/parse each quote to a IexQuote using org.json
-    List<IexQuote> quotes = new ArrayList<>();
-    Iterator<String> keys = jsonObject.keys();
-
-    do {
-      // https://devqa.io/how-to-parse-json-in-java/
-      String newJson = jsonObject.get(keys.next()).toString();
-      // System.out.println("********** TEST **********");
-      // System.out.println(newJson);
-      try {
-        IexQuote quote = JsonParser.toObjectFromJson(newJson, IexQuote.class);
-        quotes.add(quote);
-      } catch (IOException e) {
-        throw new DataRetrievalFailureException("Couldn't convert JSON to object");
-      }
-    } while (keys.hasNext());
-
-    return quotes;
-  }
-
-  /**
-   * Executes a get method and return http entity/body as as string
-   *
-   * <p>Use EntityUtils.toString() to process HTTP entity
-   *
-   * @param url resource URL
-   * @return http response body for successful status codes 200 - 299
-   * @throws DataRetrievalFailureException if HTTP failed
-   */
-  private Optional<String> executeHttpGet(String url) {
-    try {
-      HttpResponse response = getHttpClient().execute(new HttpGet(url));
-
-      if (response != null) {
-        int statusCode = response.getStatusLine().getStatusCode();
-        if (statusCode >= 200 && statusCode < 300) {
-          //System.out.println("***********************");
-          //System.out.println(EntityUtils.toString(response.getEntity()));
-          return Optional.ofNullable(EntityUtils.toString(response.getEntity()));
+  private <T> Optional<T> parseResponseBody(HttpResponse response, Class<T> clazz) {
+    if (response != null) {
+      int statusCode = response.getStatusLine().getStatusCode();
+      // successful http status code
+      if (statusCode >= 200 && statusCode < 300) {
+        try {
+          System.out.println("***********************");
+          System.out.println(EntityUtils.toString(response.getEntity()));
+          return Optional.of(
+              JsonParser.toObjectFromJson(EntityUtils.toString(response.getEntity()), clazz));
+        } catch (IOException e) {
+          throw new RuntimeException("Unable to convert JSON string to a JSON object" + '\n' + e);
         }
       }
-    } catch (IOException e) {
-      throw new DataRetrievalFailureException("Unable to retrieve data " + '\n' + e);
     }
     return Optional.empty();
+  }
+
+  HttpResponse executeHttpGet(String url) {
+    try {
+      return getHttpClient().execute(new HttpGet(url));
+    } catch (IOException e) {
+      logger.error("No response from: " + url + '\n' + e);
+    }
+    return null;
   }
 
   CloseableHttpClient getHttpClient() {

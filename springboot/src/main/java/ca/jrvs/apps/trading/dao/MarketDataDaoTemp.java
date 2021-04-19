@@ -61,11 +61,11 @@ public class MarketDataDaoTemp implements CrudRepository<IexQuote, String> {
   }
 
   @Override
-  public Iterable<IexQuote> findAllById(Iterable<String> tickers) {
+  public List<IexQuote> findAllById(Iterable<String> tickers) {
     String tempUrl = IEX_BATCH_URL;
 
     // separate each tickers with a comma
-    // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl,msft&types=quote&token={YOUR_TOKEN}
+    // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl,msft&types=quote&token={YOUR_TOKEN})
     StringJoiner joiner = new StringJoiner(",");
 
     for (String ticker : tickers) {
@@ -74,35 +74,38 @@ public class MarketDataDaoTemp implements CrudRepository<IexQuote, String> {
 
     tempUrl += joiner.toString() + "&types=quote" + "&token=" + token;
     HttpResponse response = executeHttpGet(tempUrl);
+
     return Arrays.asList(
         parseResponseBody(response, IexQuote[].class)
             .orElseThrow(
-                () -> new IllegalArgumentException("One or more Symbols were not found on IEX")));
+                () -> new IllegalArgumentException("Invalid Symbols were found on IEX")));
   }
 
   private <T> Optional<T> parseResponseBody(HttpResponse response, Class<T> clazz) {
-    if (response != null) {
-      int statusCode = response.getStatusLine().getStatusCode();
-      // successful http status code
-      if (statusCode >= 200 && statusCode < 300) {
-        try {
-          System.out.println("***********************");
-          System.out.println(EntityUtils.toString(response.getEntity()));
-          return Optional.of(
-              JsonParser.toObjectFromJson(EntityUtils.toString(response.getEntity()), clazz));
-        } catch (IOException e) {
-          throw new RuntimeException("Unable to convert JSON string to a JSON object" + '\n' + e);
-        }
-      }
+    try {
+      System.out.println("********* PROBLEM **********");
+      System.out.println(EntityUtils.toString(response.getEntity()));
+      return Optional.of(
+          JsonParser.toObjectFromJson(EntityUtils.toString(response.getEntity()), clazz));
+    } catch (IOException e) {
+      throw new RuntimeException("Unable to convert JSON string to a JSON object" + '\n' + e);
     }
-    return Optional.empty();
   }
 
-  HttpResponse executeHttpGet(String url) {
+  private HttpResponse executeHttpGet(String url) {
     try {
-      return getHttpClient().execute(new HttpGet(url));
+      HttpResponse response = getHttpClient().execute(new HttpGet(url));
+
+      if (response != null) {
+        int statusCode = response.getStatusLine().getStatusCode();
+        if (statusCode >= 200 && statusCode < 300) {
+          // System.out.println("********** TEST **********");
+          // System.out.println(EntityUtils.toString(response.getEntity()));
+          return response;
+        }
+      }
     } catch (IOException e) {
-      logger.error("No response from: " + url + '\n' + e);
+      throw new DataRetrievalFailureException("Unable to retrieve data " + '\n' + e);
     }
     return null;
   }

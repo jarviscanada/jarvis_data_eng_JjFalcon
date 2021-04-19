@@ -71,7 +71,6 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
    */
   @Override
   public List<IexQuote> findAllById(Iterable<String> tickers) {
-    List<IexQuote> quotes = new ArrayList<>();
     String tempUrl = IEX_BATCH_URL;
 
     // separate each tickers with a comma
@@ -136,7 +135,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
       if (response != null) {
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode >= 200 && statusCode < 300) {
-          //System.out.println("***********************");
+          //System.out.println("********** TEST **********");
           //System.out.println(EntityUtils.toString(response.getEntity()));
           return Optional.ofNullable(EntityUtils.toString(response.getEntity()));
         }

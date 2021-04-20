@@ -24,7 +24,7 @@ public class MarketDataDaoTest {
     marketDataConfig.setHost("https://cloud.iexapis.com/v1/");
     marketDataConfig.setToken("YOUR TOKEN");
 
-    // dao = new MarketDataDao(cm, marketDataConfig)
+    // dao = new MarketDataDaoTemp(cm, marketDataConfig)
     dao = new MarketDataDao(cm, marketDataConfig);
   }
 

@@ -12,6 +12,7 @@ import org.junit.Test;
 
 public class MarketDataDaoTest {
 
+  //private MarketDataDaoTemp dao;
   private MarketDataDao dao;
 
   @Before
@@ -21,8 +22,9 @@ public class MarketDataDaoTest {
     cm.setDefaultMaxPerRoute(50);
     MarketDataConfig marketDataConfig = new MarketDataConfig();
     marketDataConfig.setHost("https://cloud.iexapis.com/v1/");
-    marketDataConfig.setToken("pk_efa15b01017247088a293250ce5ecba7");
+    marketDataConfig.setToken("YOUR TOKEN");
 
+    // dao = new MarketDataDao(cm, marketDataConfig)
     dao = new MarketDataDao(cm, marketDataConfig);
   }
 

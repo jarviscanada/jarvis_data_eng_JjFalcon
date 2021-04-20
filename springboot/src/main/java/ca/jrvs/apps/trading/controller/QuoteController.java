@@ -20,7 +20,7 @@ public class QuoteController {
   public QuoteController(QuoteService quoteService) {
     this.quoteService = quoteService;
   }
-  ;
+
   @GetMapping(path = "/iex/ticker/{ticker}")
   @ResponseStatus(HttpStatus.OK)
   @ResponseBody

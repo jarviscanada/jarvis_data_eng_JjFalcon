@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.data.repository.CrudRepository;
 
+// Old code based on Twitter and not using JSONObject
 public class MarketDataDaoTemp implements CrudRepository<IexQuote, String> {
 
   // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl,msft&types=quote&token={YOUR_TOKEN}

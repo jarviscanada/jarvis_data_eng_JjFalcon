@@ -28,6 +28,6 @@ public class JsonParser {
     mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     ObjectReader reader = mapper.reader().withRootName("quote");
     // return (T) mapper.readValue(json, clazz);
-    return (T) reader.forType(clazz).readValue(json);
+    return reader.forType(clazz).readValue(json);
   }
 }

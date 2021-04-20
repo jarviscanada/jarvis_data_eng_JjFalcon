@@ -1,6 +1,0 @@
-grepTestCase01.txt: Line 11: going to walk the dog.
-grepTestCase01.txt: Line 14: and go get hotdog for lunch.
-grepTestCase01.txt: Line 15: the dog should be very happy.
-grepTestCase02.txt: Line 01: contains dog.
-grepTestCase02.txt: Line 03: another dog is running
-grepTestCase02.txt: Line 05: the cat ate this dog.

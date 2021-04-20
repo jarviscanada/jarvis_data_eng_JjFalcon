@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class QuoteService {
 
   private static final Logger logger = LoggerFactory.getLogger(QuoteService.class);
+  // QUOTEDAO IS NOT IMPLEMENTED YET
   private QuoteDao quoteDao;
   private MarketDataDao marketDataDao;
 

@@ -4,6 +4,7 @@ import ca.jrvs.apps.trading.model.domain.Quote;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
+// NOT INCLUDED IN THE CURRENT TICKET
 public class QuoteDao implements CrudRepository<Quote, String> {
 
   @Override

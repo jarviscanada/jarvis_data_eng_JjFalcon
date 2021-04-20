@@ -18,6 +18,7 @@ public class Application implements CommandLineRunner {
   @Autowired
   private QuoteService quoteService;
 
+  // CAN'T RUN BECAUSE QUOTEDAO IS NOT IMPLEMENTED YET
   public static void main(String[] args) throws Exception {
     SpringApplication app = new SpringApplication(Application.class);
     app.run(args);

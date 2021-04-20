@@ -1,6 +1,6 @@
 package ca.jrvs.apps.trading.dao;
 
-import ca.jrvs.apps.trading.model.config.MarketDataConfig;
+import ca.jrvs.apps.trading.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import ca.jrvs.apps.trading.util.JsonParser;
 import java.io.IOException;
@@ -19,10 +19,12 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-// String = ID
+@Repository
 public class MarketDataDao implements CrudRepository<IexQuote, String> {
 
   // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl,msft&types=quote&token={YOUR_TOKEN}
@@ -32,6 +34,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
   private HttpClientConnectionManager httpClientConnectionManager;
   private String token;
 
+  @Autowired
   public MarketDataDao(
       HttpClientConnectionManager httpClientConnectionManager, MarketDataConfig marketDataConfig) {
     this.httpClientConnectionManager = httpClientConnectionManager;
@@ -135,8 +138,8 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
       if (response != null) {
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode >= 200 && statusCode < 300) {
-          //System.out.println("********** TEST **********");
-          //System.out.println(EntityUtils.toString(response.getEntity()));
+          // System.out.println("********** TEST **********");
+          // System.out.println(EntityUtils.toString(response.getEntity()));
           return Optional.ofNullable(EntityUtils.toString(response.getEntity()));
         }
       }

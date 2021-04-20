@@ -1,4 +1,4 @@
-package ca.jrvs.apps.trading.model.domain;
+package ca.jrvs.apps.trading.model;
 
 public interface Entity<ID> {
   ID getId();

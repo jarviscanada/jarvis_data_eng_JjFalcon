@@ -1,6 +1,6 @@
 package ca.jrvs.apps.trading.dao;
 
-import ca.jrvs.apps.trading.model.config.MarketDataConfig;
+import ca.jrvs.apps.trading.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import ca.jrvs.apps.trading.util.JsonParser;
 import java.io.IOException;
@@ -77,11 +77,11 @@ public class MarketDataDaoTemp implements CrudRepository<IexQuote, String> {
 
     return Arrays.asList(
         parseResponseBody(response, IexQuote[].class)
-            .orElseThrow(
-                () -> new IllegalArgumentException("Invalid Symbols were found on IEX")));
+            .orElseThrow(() -> new IllegalArgumentException("Invalid Symbols were found on IEX")));
   }
 
   private <T> Optional<T> parseResponseBody(HttpResponse response, Class<T> clazz) {
+    // move status code check to executeHttp
     try {
       System.out.println("********* PROBLEM **********");
       System.out.println(EntityUtils.toString(response.getEntity()));

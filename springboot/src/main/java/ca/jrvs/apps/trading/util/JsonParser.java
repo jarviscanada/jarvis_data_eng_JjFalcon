@@ -10,12 +10,13 @@ import java.io.IOException;
 
 public class JsonParser {
 
-  public static String toJason(Object object, boolean prettyJson, boolean includeNullValues ) throws JsonProcessingException {
+  public static String toJason(Object object, boolean prettyJson, boolean includeNullValues)
+      throws JsonProcessingException {
     ObjectMapper mapper = new ObjectMapper();
     if (!includeNullValues) {
       mapper.setSerializationInclusion(Include.NON_NULL);
     }
-    if (prettyJson){
+    if (prettyJson) {
       mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
     return mapper.writeValueAsString(object);
@@ -29,5 +30,4 @@ public class JsonParser {
     // return (T) mapper.readValue(json, clazz);
     return (T) reader.forType(clazz).readValue(json);
   }
-
 }

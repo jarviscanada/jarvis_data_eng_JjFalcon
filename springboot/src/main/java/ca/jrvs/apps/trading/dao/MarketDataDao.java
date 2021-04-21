@@ -107,7 +107,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
     Iterator<String> keys = jsonObject.keys();
 
     do {
-      // https://devqa.io/how-to-parse-json-in-java/
+      // https://stackoverflow.com/questions/9151619/how-to-iterate-over-a-jsonobject
       String newJson = jsonObject.get(keys.next()).toString();
       // System.out.println("********** TEST **********");
       // System.out.println(newJson);
@@ -138,8 +138,6 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
       if (response != null) {
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode >= 200 && statusCode < 300) {
-          // System.out.println("********** TEST **********");
-          // System.out.println(EntityUtils.toString(response.getEntity()));
           return Optional.ofNullable(EntityUtils.toString(response.getEntity()));
         }
       }

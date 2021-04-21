@@ -27,4 +27,17 @@ public class QuoteService {
         .findById(ticker)
         .orElseThrow(() -> new IllegalArgumentException(ticker + " is invalid"));
   }
+
+  /**
+   * Update quote table against IEX source
+   * - get all quotes from teh db
+   * - foreach ticker get iexQuote
+   * - convert iexQuote to quote entity
+   * - persist quote to db
+   *
+   * @throws ca.jrvs.apps.trading.dao.ResourceNotFoundException if ticker is not found from IEX
+   */
+  public void updateMarketData(){
+
+  }
 }

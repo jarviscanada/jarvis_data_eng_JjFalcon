@@ -3,6 +3,7 @@ package ca.jrvs.apps.trading.dao;
 import static org.junit.Assert.assertEquals;
 
 import ca.jrvs.apps.trading.config.MarketDataConfig;
+import ca.jrvs.apps.trading.dao.MarketDataDao;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import java.util.Arrays;
 import java.util.List;

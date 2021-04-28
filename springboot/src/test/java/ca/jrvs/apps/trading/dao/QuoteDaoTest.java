@@ -12,15 +12,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={TestConfig.class})
+@Sql({"classpath:schema.sql"})
 public class QuoteDaoTest {
 
+  @Autowired
   private QuoteDao quoteDao;
-
   private Quote savedQuote;
 
   @Before
@@ -49,16 +52,16 @@ public class QuoteDaoTest {
   public void saveAll() {
     Quote quote01 = new Quote();
     Quote quote02 = new Quote();
-    quote01.setID("abcd");
+    quote01.setID("aapl");
     quote01.setBidPrice(10d);
     quote01.setLastPrice(12d);
-    quote02.setID("efgh");
+    quote02.setID("msft");
     quote02.setBidPrice(12d);
     quote02.setLastPrice(11d);
     List<Quote> quotes = Arrays.asList(quote01, quote02);
     quoteDao.saveAll(quotes);
-    assertTrue(quoteDao.existsById("abcd"));
-    assertTrue(quoteDao.existsById("efgh"));
+    assertTrue(quoteDao.existsById("aapl"));
+    assertTrue(quoteDao.existsById("msft"));
   }
 
   @Test
@@ -79,9 +82,8 @@ public class QuoteDaoTest {
   public void findById() {
     Quote foundQuote = quoteDao.findById("aapl").orElseThrow(
         () -> new IllegalArgumentException("Symbol not found"));
-    assertEquals("aapl", foundQuote.getId());
+    assertEquals("AAPL", foundQuote.getId());
   }
-
 
   @Test
   public void count() {
@@ -93,7 +95,7 @@ public class QuoteDaoTest {
   @Test
   public void deleteById() {
     saveAll();
-    quoteDao.deleteById("abcd");
-    assertFalse(quoteDao.existsById("abcd"));
+    quoteDao.deleteById("aapl");
+    assertFalse(quoteDao.existsById("aapl"));
   }
 }

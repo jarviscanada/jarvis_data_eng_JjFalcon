@@ -3,7 +3,6 @@ package ca.jrvs.apps.trading.dao;
 import static org.junit.Assert.assertEquals;
 
 import ca.jrvs.apps.trading.config.MarketDataConfig;
-import ca.jrvs.apps.trading.dao.MarketDataDao;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +22,7 @@ public class MarketDataDaoTest {
     cm.setDefaultMaxPerRoute(50);
     MarketDataConfig marketDataConfig = new MarketDataConfig();
     marketDataConfig.setHost("https://cloud.iexapis.com/v1/");
-    marketDataConfig.setToken("YOUR TOKEN");
+    marketDataConfig.setToken("pk_efa15b01017247088a293250ce5ecba7");
 
     // dao = new MarketDataDaoTemp(cm, marketDataConfig)
     dao = new MarketDataDao(cm, marketDataConfig);

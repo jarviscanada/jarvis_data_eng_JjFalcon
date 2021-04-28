@@ -26,8 +26,11 @@ public class JsonParser {
     ObjectMapper mapper = new ObjectMapper();
     mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
     mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    ObjectReader reader = mapper.reader().withRootName("quote");
     // return (T) mapper.readValue(json, clazz);
+
+    ObjectReader reader = mapper.reader().withRootName("quote");
+    // forType(JavaType valueType)
+    // Method for constructing a new reader instance that is configured to data bind into specified type.
     return reader.forType(clazz).readValue(json);
   }
 }

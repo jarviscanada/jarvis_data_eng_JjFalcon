@@ -40,6 +40,14 @@ public class QuoteDao implements CrudRepository<Quote, String> {
     simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName(TABLE_NAME);
   }
 
+  private void addOne(Quote quote) {
+    SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(quote);
+    int row = simpleJdbcInsert.execute(parameterSource);
+    if (row != 1) {
+      throw new IncorrectResultSizeDataAccessException("Failed to insert", 1, row);
+    }
+  }
+
   /**
    * hint: http://bit.ly/2sDz8hg
    *
@@ -58,6 +66,12 @@ public class QuoteDao implements CrudRepository<Quote, String> {
       addOne(quote);
     }
     return quote;
+  }
+
+  @Override
+  public <S extends Quote> Iterable<S> saveAll(Iterable<S> quotes) {
+    quotes.forEach(this::save);
+    return quotes;
   }
 
   private int updateOne(Quote quote) {
@@ -84,21 +98,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   }
 
   @Override
-  public <S extends Quote> Iterable<S> saveAll(Iterable<S> quotes) {
-    quotes.forEach(this::save);
-    return quotes;
-  }
-
-  private void addOne(Quote quote) {
-    SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(quote);
-    int row = simpleJdbcInsert.execute(parameterSource);
-    if (row != 1) {
-      throw new IncorrectResultSizeDataAccessException("Failed to insert", 1, row);
-    }
-  }
-
-  @Override
-  public Iterable<Quote> findAll() {
+  public List<Quote> findAll() {
     final String SQL_SELECTALL = "SELECT * FROM " + TABLE_NAME;
     return jdbcTemplate.query(SQL_SELECTALL, new BeanPropertyRowMapper<>(Quote.class));
   }
@@ -112,7 +112,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   @Override
   public Optional<Quote> findById(String ticker) {
     final String SQL_SELECTONE =
-        "SELECT * FROM " + TABLE_NAME + " WHERE" + ID_COLUMN_NAME + " = :ticker";
+        "SELECT * FROM " + TABLE_NAME + " WHERE " + ID_COLUMN_NAME + " = :ticker";
     List<Quote> quotes =
         namedTemplate.query(
             SQL_SELECTONE,
@@ -130,7 +130,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   @Override
   public boolean existsById(String ticker) {
     final String SQL_SELECTONE =
-        "SELECT * FROM " + TABLE_NAME + " WHERE" + ID_COLUMN_NAME + " = :ticker";
+        "SELECT * FROM " + TABLE_NAME + " WHERE " + ID_COLUMN_NAME + " = :ticker";
     return namedTemplate
             .query(
                 SQL_SELECTONE,

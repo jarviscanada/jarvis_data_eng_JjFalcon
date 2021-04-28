@@ -9,11 +9,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = {"ca.jrvs.apps.trading.dao", "ca.jrvs.apps.trading.service"})
 public class TestConfig {
 
   @Bean
-  public MarketDataConfig marketDataConfig(){
+  public MarketDataConfig marketDataConfig() {
     MarketDataConfig marketDataConfig = new MarketDataConfig();
     marketDataConfig.setHost("https://cloud.iexapis.com/v1/");
     marketDataConfig.setToken(System.getenv("IEX_TOKEN"));
@@ -21,20 +21,27 @@ public class TestConfig {
   }
 
   @Bean
-  public DataSource dataSource(){
-    System.out.println("Creating apacheDataSource");
-    String url = System.getenv("PSQL_URL");
+  public DataSource dataSource() {
+    String jdbcUrl =
+        "jdbc:postgresql://"
+            + System.getenv("PSQL_HOST")
+            + ":"
+            + System.getenv("PSQL_PORT")
+            + "/"
+            + System.getenv("PSQL_DB");
     String user = System.getenv("PSQL_USER");
     String password = System.getenv("PSQL_PASSWORD");
+
+    // Never log your credentials/secrets. Use IDE debugger instead
     BasicDataSource basicDataSource = new BasicDataSource();
-    basicDataSource.setUrl(url);
+    basicDataSource.setUrl(jdbcUrl);
     basicDataSource.setUsername(user);
     basicDataSource.setPassword(password);
     return basicDataSource;
   }
 
   @Bean
-  public HttpClientConnectionManager httpClientConnectionManager(){
+  public HttpClientConnectionManager httpClientConnectionManager() {
     PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
     cm.setMaxTotal(50);
     cm.setDefaultMaxPerRoute(50);

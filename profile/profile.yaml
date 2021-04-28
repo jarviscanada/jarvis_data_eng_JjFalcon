@@ -142,7 +142,6 @@ education:
     awards_achievements:
       - Honours Degree
       - Consistent Dean's List
-      - "GPA: 3.72/4.30"
   - school_name: CGA Canada
     duration: SEP2009-DEC2014
     degree: CPA, CGA Certification
@@ -155,7 +154,6 @@ education:
     department: Business Administration
     awards_achievements:
       - Honours Degree
-      - "GPA: 3.62/4.00"
 
 #Optional section
 others:

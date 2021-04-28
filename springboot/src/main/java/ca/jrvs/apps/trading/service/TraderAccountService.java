@@ -9,6 +9,7 @@ import ca.jrvs.apps.trading.model.domain.Account;
 import ca.jrvs.apps.trading.model.domain.Position;
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
 import ca.jrvs.apps.trading.model.domain.Trader;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,13 +38,7 @@ public class TraderAccountService {
 
     if (doesExists(newTrader)) {
       throw new IllegalArgumentException("Account already exist");
-    } else if (false) {
-      // TO DO: validate non null values from newTrader
-//      private String firstName;
-//      private String lastName;
-//      private Date dob;
-//      private String country;
-//      private String email;
+    } else if (!isNotNull(newTrader)) {
       throw new IllegalArgumentException("Encountered empty fields");
     } else {
       Account newAccount = new Account();
@@ -63,6 +58,17 @@ public class TraderAccountService {
       }
     }
     return false;
+  }
+
+  // check for null values
+  private boolean isNotNull(Trader trader) {
+    String firstName = trader.getFirstName();
+    String lastName = trader.getLastName();
+    Date dob = trader.getDob();
+    String country = trader.getCountry();
+    String email = trader.getEmail();
+
+    return !(firstName == null || lastName == null || dob == null || country == null | email == null);
   }
 
   public void deleteTraderById(int id) {

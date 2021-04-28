@@ -55,14 +55,12 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_JjFalcon](
 **Ryerson University (SEP2015-DEC2020)**, BSc (Honours), Computer Science. Software Engineering concentration, Computer Science
 - Honours Degree
 - Consistent Dean's List
-- GPA: 3.72/4.30
 
 **CGA Canada (SEP2009-DEC2014)**, CPA, CGA Certification, Accounting
 - Professional Designation
 
 **SAIT Polytechnic (SEP2010-DEC2013)**, Bachelor of Applied Business Administration Accounting and IT, Business Administration
 - Honours Degree
-- GPA: 3.62/4.00
 
 
 ## Miscellaneous

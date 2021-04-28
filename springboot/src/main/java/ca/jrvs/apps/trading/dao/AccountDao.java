@@ -52,7 +52,8 @@ public class AccountDao extends JdbcCrudDao<Account> {
 
   @Override
   public int updateOne(Account entity) {
-    throw new UnsupportedOperationException("Not implemented");
+    String sqlQuery = "UPDATE " + getTableName() + " SET amount=? WHERE " + getIdColumnName() + "=?";
+    return jdbcTemplate.update(sqlQuery, entity.getAmount(), entity.getID());
   }
 
   @Override

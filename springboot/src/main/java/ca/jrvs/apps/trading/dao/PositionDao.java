@@ -1,8 +1,10 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.Position;
+import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
@@ -45,4 +47,8 @@ public class PositionDao {
     return Position.class;
   }
 
- }
+  public List<Position> findAllById(Integer id) {
+    String sqlQuery = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + "=?";
+    return getJdbcTemplate().query(sqlQuery, BeanPropertyRowMapper.newInstance(Position.class), id);
+  }
+}

@@ -21,7 +21,7 @@ public class JavaGrepViewer {
     try {
       javaGrep.process();
     } catch (IOException e) {
-      logger.error("ERROR: ", e);
+      logger.error("Unable to process: ", e);
     }
   }
 

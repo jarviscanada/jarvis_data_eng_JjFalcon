@@ -1,8 +1,10 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
+import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
@@ -69,4 +71,12 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder> {
   public void deleteAll(Iterable<? extends SecurityOrder> iterable) {
     throw new UnsupportedOperationException("Not implemented");
   }
+
+  // use foreign key: account_id
+  public List<SecurityOrder> findAllById(Integer id) {
+    String sqlQuery = "SELECT * FROM " + getTableName() + " WHERE account_id=?";
+    return getJdbcTemplate()
+        .query(sqlQuery, BeanPropertyRowMapper.newInstance(SecurityOrder.class), id);
+  }
+
 }

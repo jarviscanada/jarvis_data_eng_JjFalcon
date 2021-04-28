@@ -46,7 +46,7 @@ public class QuoteService {
     // get all quotes
     List<String> tickers = new ArrayList<>();
     for (Quote quote: dbQuotes) {
-      tickers.add(quote.getId());
+      tickers.add(quote.getTicker());
     }
 
     Iterable<IexQuote> iexQuotes = marketDataDao.findAllById(tickers);

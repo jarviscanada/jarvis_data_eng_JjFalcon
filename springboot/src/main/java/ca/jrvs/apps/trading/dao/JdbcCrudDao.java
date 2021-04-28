@@ -12,6 +12,7 @@ import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -32,7 +33,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
 
   @Override
   public <S extends T> S save(S entity) {
-    if (existsById(entity.getId())) {
+    if (existsById(entity.getID())) {
       if (updateOne(entity) != 1) {
         throw new DataRetrievalFailureException("Unable to update quote");
       }
@@ -64,17 +65,13 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
     return entity;
   }
 
-  /**
-   * iterate through ids use findById and add to a list
-   *
-   * @param ids
-   * @return
-   */
+  /** iterate through ids, use findById and add to a list */
   @Override
   public List<T> findAllById(Iterable<Integer> ids) {
     List<T> entities = new ArrayList<>();
     for (int id : ids) {
-      entities.add(findById(id).orElseThrow(() -> new EntityNotFoundException("ID not found: " + id)));
+      entities.add(
+          findById(id).orElseThrow(() -> new EntityNotFoundException("ID not found: " + id)));
     }
     return entities;
   }
@@ -85,12 +82,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
     return getJdbcTemplate().query(sqlQuery, BeanPropertyRowMapper.newInstance(getEntityClass()));
   }
 
-  /**
-   * find it, if found then it exist
-   *
-   * @param id
-   * @return
-   */
+  /** find it, if found then it exist */
   @Override
   public boolean existsById(Integer id) {
     String sqlQuery = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + "=?";
@@ -111,10 +103,9 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
     getJdbcTemplate().execute(sqlQuery);
   }
 
+  @Override
   public long count() {
     String sqlQuery = "SELECT COUNT(*) FROM " + getTableName();
-    // to do
-    //return getJdbcTemplate().update(sqlQuery, new SingleColumnRowMapper<Long>()).get(0);
-    return 0;
+    return getJdbcTemplate().query(sqlQuery, SingleColumnRowMapper.newInstance(Long.class)).get(0);
   }
 }

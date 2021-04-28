@@ -39,7 +39,7 @@ public class QuoteDaoTest {
 
   @After
   public void deleteOne() {
-    quoteDao.deleteById(savedQuote.getId());
+    quoteDao.deleteById(savedQuote.getID());
   }
 
   @Test
@@ -82,7 +82,7 @@ public class QuoteDaoTest {
   public void findById() {
     Quote foundQuote = quoteDao.findById("aapl").orElseThrow(
         () -> new IllegalArgumentException("Symbol not found"));
-    assertEquals("AAPL", foundQuote.getId());
+    assertEquals("AAPL", foundQuote.getID());
   }
 
   @Test

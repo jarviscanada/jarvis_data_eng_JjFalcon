@@ -12,7 +12,7 @@ public class Quote implements Entity<String> {
   private Integer askSize;
 
   @Override
-  public String getId() {
+  public String getID() {
     return ticker;
   }
 
@@ -67,5 +67,11 @@ public class Quote implements Entity<String> {
 
   public void setAskSize(Integer askSize) {
     this.askSize = askSize;
+  }
+
+  @Override
+  public String toString() {
+    return "Quote{" + "symbol='" + ticker + '\'' + ", askPrice=" + askPrice + ", askSize=" + askSize
+        + ", bidPrice=" + bidPrice + ", bidSize=" + bidSize + ", lastPrice=" + lastPrice + '}';
   }
 }

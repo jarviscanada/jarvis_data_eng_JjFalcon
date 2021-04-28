@@ -30,7 +30,7 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
   // https://cloud.iexapis.com/v1/stock/market/batch?symbols=aapl,msft&types=quote&token={YOUR_TOKEN}
   private static final String IEX_BATCH_PATH = "stock/market/batch?symbols=";
   private final String IEX_BATCH_URL;
-  private Logger logger = LoggerFactory.getLogger(MarketDataDaoTemp.class);
+  private Logger logger = LoggerFactory.getLogger(MarketDataDao.class);
   private HttpClientConnectionManager httpClientConnectionManager;
   private String token;
 

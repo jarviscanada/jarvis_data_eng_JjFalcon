@@ -13,7 +13,7 @@ The app is built within a Spring Framework to facilitate a decoupling via IoC.
 The app fetches data from IEX Cloud via its REST API and persisted to a PostgreSQL database.
 
 # Quick Start
-## Prequiresites: 
+## Pre-requisites: 
 - Docker v17.05 or higher
 - How to start the application:
 

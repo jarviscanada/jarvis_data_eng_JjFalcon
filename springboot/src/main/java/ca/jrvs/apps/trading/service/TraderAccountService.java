@@ -34,18 +34,19 @@ public class TraderAccountService {
     this.securityOrderDao = securityOrderDao;
   }
 
-  public TraderAccountView createTraderAndAccount(Trader newTrader) {
+  public TraderAccountView createTraderAndAccount(Trader trader) {
 
-    if (doesExists(newTrader)) {
+    if (doesExists(trader)) {
       throw new IllegalArgumentException("Account already exist");
-    } else if (!isNotNull(newTrader)) {
+    } else if (!isNotNull(trader)) {
       throw new IllegalArgumentException("Encountered empty fields");
     } else {
-      Account newAccount = new Account();
-      newTrader = traderDao.save(newTrader);
-      newAccount.setTraderId(newTrader.getID());
-      newAccount.setAmount(0.00);
-      newAccount = accountDao.save(newAccount);
+      Account account = new Account();
+      Trader newTrader = traderDao.save(trader);
+      // account.setTraderId(2);
+      account.setTraderId(trader.getID());
+      account.setAmount(0.00);
+      Account newAccount = accountDao.save(account);
       return new TraderAccountView(newTrader, newAccount);
     }
   }

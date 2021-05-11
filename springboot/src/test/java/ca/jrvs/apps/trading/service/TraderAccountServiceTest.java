@@ -49,14 +49,13 @@ public class TraderAccountServiceTest {
     newTrader.setCountry("Canada");
     newTrader.setEmail("myemail@gmail.com");
     newTrader.setDob(Date.valueOf(LocalDate.now()));
+    //savedView = traderAccountTestService.createTraderAndAccount(newTrader);
   }
 
   @After
-  public void deleteTest() {
-    securityOrderDao.deleteAll();
-    accountDao.deleteAll();
-    traderDao.deleteAll();
-    quoteDao.deleteAll();
+  public void cleanUp() {
+    accountDao.deleteById(savedView.getAccount().getID());
+    traderDao.deleteById(savedView.getTrader().getID());
   }
 
   @Test
@@ -91,5 +90,4 @@ public class TraderAccountServiceTest {
     deposit();
     traderAccountTestService.withdraw(1, 5000.00);
   }
-
 }

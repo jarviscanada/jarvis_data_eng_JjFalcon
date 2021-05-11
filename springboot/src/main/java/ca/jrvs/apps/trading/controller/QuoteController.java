@@ -44,7 +44,7 @@ public class QuoteController {
   }
 
   @ApiOperation(value = "Update quote table using iex data", notes = "Update all quotes in the quote table.  Use IEX trading API as market data source.")
-  // PUT /iexMarketData
+  // PUT /quote/iexmarketdata
   @PutMapping(path = "/iexMarketData")
   @ResponseStatus(HttpStatus.OK)
   @ResponseBody
@@ -56,7 +56,8 @@ public class QuoteController {
     }
   }
 
-  @ApiOperation(value = "Update a give quote in the quote table", notes = "Manually update a quote in the quote table using IEX market data")
+  @ApiOperation(value = "Update a given quote in the quote table", notes = "Manually update a quote in the quote table using IEX market data")
+  // PUT /
   @PutMapping(path = "/")
   @ResponseStatus(HttpStatus.OK)
   @ResponseBody
@@ -69,6 +70,7 @@ public class QuoteController {
   }
 
   @ApiOperation(value= "Add a new ticker to the dailyList (quote table)", notes = "Add a new ticker/symbol to the quote table, so tracker can trade this security.")
+  // POST /tickerId/{tickerId}
   @PostMapping(path = "/tickerId/{ticker}")
   @ResponseStatus(HttpStatus.CREATED)
   @ApiResponses(value = {@ApiResponse(code =404, message = "ticker is not found in IEX system")})
@@ -81,7 +83,8 @@ public class QuoteController {
     }
   }
 
-  @ApiOperation(value = "Show the dailyList", notes = "Show dailyList for this trading system.")
+  @ApiOperation(value = "Displays all securities that are available for trading", notes = "Show dailyList for this trading system.")
+  // GET /quote/dailylist
   @GetMapping(path = "/dailyList")
   @ResponseStatus(HttpStatus.OK)
   @ResponseBody

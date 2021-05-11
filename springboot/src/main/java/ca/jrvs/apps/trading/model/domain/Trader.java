@@ -15,7 +15,7 @@ public class Trader implements Entity<Integer> {
 
   @Override
   public Integer getID() {
-    return null;
+    return id;
   }
 
   @Override

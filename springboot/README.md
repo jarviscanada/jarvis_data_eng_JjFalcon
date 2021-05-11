@@ -1,6 +1,3 @@
-Table of contents
-* [Introduction](#Introduction)
-* include all first level titles
 
 # Introduction
 This project is a POC development of a new trading platform MVP to replace a legacy system built as
@@ -47,7 +44,7 @@ The app fetches data from IEX Cloud via its REST API and persisted to a PostgreS
     --network trading-net \
     -d -p 5432:5432 trading-psql
     ```
-- Step 4: Set up `IEX_PUB_TOKEN` environment variable for IEX API access, and start the Trading App container with connection to the trading-net network
+  - Step 4: Set up `IEX_PUB_TOKEN` environment variable for IEX API access, and start the Trading App container with connection to the trading-net network
 
     ```
     # Set credential obtained from IEX
@@ -160,7 +157,7 @@ Image Descriptions:
   
   `COPY --from=build /build/target/trading-1.0-SNAPSHOT.jar /usr/local/app/trading/lib/trading_app.jar`
 
-  which copies the completed .jar file into our new image with the appropriate JDK and setting the image's entrypoint to run it by the following command
+  which copies the completed .jar file into our new image with the appropriate JDK and below command is to set the image's entrypoint to run it.
 
   `ENTRYPOINT ["java","-jar","/usr/local/app/trading/lib/trading_app.jar"]`
   

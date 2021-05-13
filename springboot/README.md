@@ -87,8 +87,8 @@ following layers: the Swagger as the VIEW; the Controller layer and the Service 
     acquire data from the DB through the DAO layer.
     
 - DAO Layer
-  - This layer deals with the app's data sources by retrieving data from IEX's via an API, 
-    then performs CRUD operations to the local database. 
+  - This layer deals with the app's data sources by retrieving data from IEX's via an API [MarketDataDao], 
+    then performs CRUD operations from/to the local database. 
     
 - SpringBoot
   - Provides the framework and toolkit to manage class dependencies and auto-configurations.
@@ -151,7 +151,7 @@ Image Descriptions:
   and is automatically run when the database is first created.
 
 
-- The trading-app was by pulling the openjdk:8-alpine for the Web API and is used to create the corresponding Trading App container/instance.
+- The trading-app was built by pulling the openjdk:8-alpine for the Web API and is used to create the corresponding Trading App container/instance.
 
   The Docker file contains the instructions 
   

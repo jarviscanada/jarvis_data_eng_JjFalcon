@@ -24,7 +24,7 @@ import org.springframework.stereotype.Repository;
 public class QuoteDao implements CrudRepository<Quote, String> {
 
   // https://www.programmersought.com/article/221665717/
-  // JdbcTemplate vs NamedParamenterJdbcTemplate
+  // JdbcTemplate vs NamedParameterJdbcTemplate
   private JdbcTemplate jdbcTemplate;
   private NamedParameterJdbcTemplate namedTemplate;
   private SimpleJdbcInsert simpleJdbcInsert;

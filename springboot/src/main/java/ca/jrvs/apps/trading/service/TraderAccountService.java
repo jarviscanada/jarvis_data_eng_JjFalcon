@@ -9,6 +9,7 @@ import ca.jrvs.apps.trading.model.domain.Account;
 import ca.jrvs.apps.trading.model.domain.Position;
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
 import ca.jrvs.apps.trading.model.domain.Trader;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,24 +34,19 @@ public class TraderAccountService {
     this.securityOrderDao = securityOrderDao;
   }
 
-  public TraderAccountView createTraderAndAccount(Trader newTrader) {
+  public TraderAccountView createTraderAndAccount(Trader trader) {
 
-    if (doesExists(newTrader)) {
+    if (doesExists(trader)) {
       throw new IllegalArgumentException("Account already exist");
-    } else if (false) {
-      // TO DO: validate non null values from newTrader
-//      private String firstName;
-//      private String lastName;
-//      private Date dob;
-//      private String country;
-//      private String email;
+    } else if (!isNotNull(trader)) {
       throw new IllegalArgumentException("Encountered empty fields");
     } else {
-      Account newAccount = new Account();
-      newTrader = traderDao.save(newTrader);
-      newAccount.setTraderId(newTrader.getID());
-      newAccount.setAmount(0.00);
-      newAccount = accountDao.save(newAccount);
+      Account account = new Account();
+      Trader newTrader = traderDao.save(trader);
+      // account.setTraderId(2);
+      account.setTraderId(trader.getID());
+      account.setAmount(0.00);
+      Account newAccount = accountDao.save(account);
       return new TraderAccountView(newTrader, newAccount);
     }
   }
@@ -63,6 +59,17 @@ public class TraderAccountService {
       }
     }
     return false;
+  }
+
+  // check for null values
+  private boolean isNotNull(Trader trader) {
+    String firstName = trader.getFirstName();
+    String lastName = trader.getLastName();
+    Date dob = trader.getDob();
+    String country = trader.getCountry();
+    String email = trader.getEmail();
+
+    return !(firstName == null || lastName == null || dob == null || country == null | email == null);
   }
 
   public void deleteTraderById(int id) {

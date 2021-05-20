@@ -52,7 +52,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
       try {
         System.out.println(EntityUtils.toString(response.getEntity()));
       } catch (IOException e) {
-        logger.error("Response has no entity");
+        logger.error("Response has no entity", e);
       }
       throw new RuntimeException("Unexpected HTTP status: " + status);
     }
@@ -106,8 +106,8 @@ public class TwitterDao implements CrdDao<Tweet, String> {
             .encode(Double.toString(latitude), StandardCharsets.UTF_8.name());
       }
     } catch (UnsupportedEncodingException e) {
-      logger.error("Encoding not supported: " + StandardCharsets.UTF_8.name());
-      throw new RuntimeException(e.getMessage());
+      logger.error("Encoding not supported: " + StandardCharsets.UTF_8.name(), e);
+      throw new RuntimeException("Encoding not supported ", e);
     }
     return new URI(TWITTER_POST_URI + tempUriInput);
   }

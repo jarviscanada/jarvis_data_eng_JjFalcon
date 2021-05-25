@@ -38,10 +38,10 @@ SELECT
 FROM retail;
 
 -- Run 2nd
-SELECT yyyy * 100 + mm AS yymm::, sum(amount)
+SELECT cast(yyyy * 100 + mm AS text) yyyymm , sum(amount)
 FROM monthlyRevenue
-GROUP BY yy, mm
-ORDER BY yymm ASC;
+GROUP BY yyyy, mm
+ORDER BY yyyymm ASC;
 
 
 

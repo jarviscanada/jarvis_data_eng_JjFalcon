@@ -49,9 +49,9 @@ The Data Analysis in Jupyter Notebook (found [here](./retail_data_analytics_wran
 + The fluctuation [increase/decrease] in "Existing Customers" suggests that there is a significant amount of customers "abandoning" the company.
 
 Recommendation:  
-Investigate whether customers are being deleted from the DB.  
-This should not happen, instead inactive customers should be marked down as inactive.
-Then, analyze inactive customers and perform a correlation analysis against products purchased.
++ Investigate whether customers are being deleted from the DB.  
+  This should not happen, instead inactive customers should be marked down as inactive.
+  Then, analyze inactive customers and perform a correlation analysis against products purchased.
 
 #### Based on RFM Segmentation
 + Marketing Strategy 01:  Target Segments:  About to Sleep, At Risk, Hibernating, Need Attention

@@ -219,8 +219,8 @@ public class MathChallenge {
     } else {
       System.out.println("Fibo using dynamic programming: ");
       for (int i = 0; i < n; i++) {
-        int[] fibArray = new int[i + 1];
-        System.out.print(fibDynamic(i, fibArray) + " ");
+        int[] fibResults = new int[i + 1];
+        System.out.print(fibDynamic(i, fibResults) + " ");
       }
     }
   }

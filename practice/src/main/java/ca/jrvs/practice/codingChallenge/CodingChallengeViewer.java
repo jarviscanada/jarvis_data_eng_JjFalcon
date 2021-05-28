@@ -51,7 +51,7 @@ public class CodingChallengeViewer {
     String inputString = "";
     if (option > 10) {
       inputString = getInputString(scanner);
-    } else if (option > 5 || option <9) {
+    } else if (option > 5 && option <9) {
       testArray = new int[]{3, 1, 2, 6, 4, 5, 7, 9};
     } else {
       inputNumber = getInputNumber(scanner);

@@ -1,2 +1,5 @@
-package ca.jrvs.practice.codingChallenge;public class BinarySearch {
+package ca.jrvs.practice.codingChallenge;
+
+public class BinarySearch {
+
 }

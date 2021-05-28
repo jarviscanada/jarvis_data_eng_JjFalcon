@@ -66,27 +66,27 @@ Recommendation:
 - Marketing Strategy 01:  These are segments who are likely unsatisfied with existing products.
   <br/><br/>
   Reach out and provide incentives in getting feedback on products purchased.
-  <br/><br/>
+  <br/>
   Introduce any new products and/or product improvements that might get them interested again.
-  <br/><br/>  
+  <br/>
   Introduce free trial periods on new products.
-  <br/><br/>
+  <br/>
 
 - Marketing Strategy 02:  These are segments who are likely very satisfied with existing products.
   <br/><br/>
   Regularly reach out and provide incentives in being "great" customers.  
   Constant communication is key to ensure they feel valued.
-  <br/><br/>
+  <br/>
   Introduce occasional discount promotions as a way to say Thank You.
-  <br/><br/>
+  <br/>
   Introduce loyalty recognition promotions.
 
 - Marketing Strategy 03:  These are segments who are likely exploring existing products.
   <br/><br/>
   Introduce cross-promotions. Introduce additional products related to their first purchase.
-  <br/><br/>
+  <br/>
   Introduce loyalty programs and have them sign up.
-  <br/><br/>
+  <br/>
   Introduce awareness campaigns to get them educated of existing products / product lines.
 
 

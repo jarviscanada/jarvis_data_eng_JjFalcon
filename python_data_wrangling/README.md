@@ -45,7 +45,6 @@ The Data Analysis in Jupyter Notebook (found [here](./retail_data_analytics_wran
 ### Business Intelligence
 #### Based on Monthly Distribution of Existing vs New Customers
 + While there is a consistent amount of "New Customers" added every month, there is no corresponding growth in "Existing Customer.
-  <br/><br/>
 + The fluctuation [increase/decrease] in "Existing Customers" suggests that there is a significant amount of customers "abandoning" the company.
 
 Recommendation:  

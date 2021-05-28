@@ -83,9 +83,9 @@ Recommendation:
 
 - Marketing Strategy 03:  These are segments who are likely exploring existing products.
   <br/><br/>
-  Introduce cross-promotions. Introduce additional products related to their first purchase.
+  Introduce cross-promotions. ie) Introduce additional products related to their first purchase.
   <br/>
-  Introduce loyalty programs and have them sign up.
+  Introduce loyalty programs and provide incentives to sign up.
   <br/>
   Introduce awareness campaigns to get them educated of existing products / product lines.
 

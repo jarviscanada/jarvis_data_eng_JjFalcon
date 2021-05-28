@@ -26,8 +26,7 @@ between 01/12/2009 and 09/12/2011 to work on.
 
 This retail.sql file is saved [here](./psql/retail.sql).
 
-This application ran on the Jupyter Notebook environment that accesses   
-the file ingested into a PostgreSQL DB via Docker containers.
+This application ran on the Jupyter Notebook environment that accesses the file ingested into a PostgreSQL DB via Docker containers.
 
 A docker bridge network connects the two containers.
 

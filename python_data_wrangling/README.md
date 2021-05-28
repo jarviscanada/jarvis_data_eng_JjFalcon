@@ -1,4 +1,7 @@
 # Introduction
+LGS, London Gift Shop is a UK-based online store that sells gift-ware
+whose revenue has plateaued for the past 10 years.
+
 They are looking to increase revenue through data-driven marketing strategies
 by utilizing the latest technology to gain a better view into
 their customers’ motivations, preferences, and behaviors.
@@ -11,9 +14,6 @@ to target a specific group of customers with marketing efforts that
 are highly relevant for their particular behaviour.
 
 # Implementation
-LGS, London Gift Shop is a UK-based online store that sells gift-ware
-whose revenue has plateaued for the past 10 years.
-
 This application is implemented in python within the Jupyter Notebook environment
 and will utilize the Pandas Dataframe and Matplotlib to provide the relevant business intelligence and charts.
 
@@ -36,8 +36,6 @@ A docker bridge network connects the two containers.
 
 
 ## Data Analytics and Wrangling
-- Discuss how would you use the data to help LGS to increase their revenue (e.g. design a new marketing strategy with data you provided)
-
 ### Data Analytics
 The Data Analysis in Jupyter Notebook (found [here](./retail_data_analytics_wrangling.ipynb)) performs data preparation and cleansing, and then presents the following analytics and charts:
 1. Monthly Distribution of Regular Orders vs Cancelled Orders

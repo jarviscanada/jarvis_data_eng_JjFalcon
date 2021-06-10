@@ -65,10 +65,19 @@ jarvis_projects:
       - "Grep App: Simulates the Unix grep implementation that searches all files recursively from a given directory argument and outputs a file containing all the lines that match the given regex pattern argument.  Deployed via Docker."
   - name: "Springboot App"
     git_url: "/springboot"
-    description: "COMING SOON"
+    description: "
+    A POC development of a trading platform that allows users to manage client profiles and accounts, monitor portfolio performance and trade securities.
+    The microservices are auto-configured using SpringBoot and utilize Apache Tomcat as the embedded servlet.
+    The app is built within a Spring Framework to facilitate a decoupling via IoC.
+    The app fetches data from IEX Cloud via its REST API and persisted to a PostgreSQL database.
+    "
   - name: "Python Data Analytics"
-    git_url: "/python_data_anlytics"
-    description: "COMING SOON"
+    git_url: "/python_data_wrangling"
+    description: "
+    A POC development to provide sample business intelligence about sales trend and customer portfolio.
+    This application ran on the Jupyter Notebook environment that accesses the file ingested into a PostgreSQL DB via Docker containers.
+    The app utilizes the Pandas Dataframe and Matplotlib to provide the relevant business intelligence and charts.
+    "
   - name: "Hadoop"
     git_url: "/hadoop"
     description: "COMING SOON"

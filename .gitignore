@@ -32,6 +32,13 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 
+#jupyter
+.config/configstore
+.ipynb_checkpoints
+.jupyter/lab/workspaces
+.local/share/jupyter/runtime
+.npm/_cacache
+
 # LOGS
 *.log
 *.logs

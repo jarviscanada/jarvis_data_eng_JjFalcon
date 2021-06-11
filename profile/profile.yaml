@@ -24,20 +24,20 @@ skills:
     - Java
     - Python
     - RDBMS/SQL
-    - Linux/Bash
     - Agile/Scrum
-    - Docker
     - Data Structures and Algorithms
   # At least 5 skills
   competent:
+    - Linux/Bash
+    - Docker
     - Javascript
-    - HTML/CSS
-    - Bootstrap
     - UML Diagrams
-    - JIRA
     - GIT
   # At least 5 skills
   familiar:
+    - HTML/CSS
+    - Bootstrap
+    - JIRA
     - C
     - VBA
     - Prolog for AI
@@ -69,7 +69,7 @@ jarvis_projects:
     A POC development of a trading platform that allows users to manage client profiles and accounts, monitor portfolio performance and trade securities.
     The microservices are auto-configured using SpringBoot and utilize Apache Tomcat as the embedded servlet.
     The app is built within a Spring Framework to facilitate a decoupling via IoC.
-    The app fetches data from IEX Cloud via its REST API and persisted to a PostgreSQL database.
+    The app fetches data from IEX Cloud via its REST API and persisted to a PostgreSQL DB via Docker containers.
     "
   - name: "Python Data Analytics"
     git_url: "/python_data_wrangling"

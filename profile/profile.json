@@ -58,7 +58,7 @@
       "name": "Core Java Apps"
     },
     {
-      "description": " A POC development of a trading platform that allows users to manage client profiles and accounts, monitor portfolio performance and trade securities. The microservices are auto-configured using SpringBoot and utilize Apache Tomcat as the embedded servlet. The app is built within a Spring Framework to facilitate a decoupling via IoC. The app fetches data from IEX Cloud via its REST API and persisted to a PostgreSQL database. ",
+      "description": " A POC development of a trading platform that allows users to manage client profiles and accounts, monitor portfolio performance and trade securities. The microservices are auto-configured using SpringBoot and utilize Apache Tomcat as the embedded servlet. The app is built within a Spring Framework to facilitate a decoupling via IoC. The app fetches data from IEX Cloud via its REST API and persisted to a PostgreSQL DB via Docker containers. ",
       "git_url": "/springboot",
       "name": "Springboot App"
     },
@@ -122,14 +122,16 @@
   ],
   "skills": {
     "competent": [
+      "Linux/Bash",
+      "Docker",
       "Javascript",
-      "HTML/CSS",
-      "Bootstrap",
       "UML Diagrams",
-      "JIRA",
       "GIT"
     ],
     "familiar": [
+      "HTML/CSS",
+      "Bootstrap",
+      "JIRA",
       "C",
       "VBA",
       "Prolog for AI",
@@ -142,9 +144,7 @@
       "Java",
       "Python",
       "RDBMS/SQL",
-      "Linux/Bash",
       "Agile/Scrum",
-      "Docker",
       "Data Structures and Algorithms"
     ]
   },

@@ -4,11 +4,11 @@
 
 ## Skills
 
-**Proficient:** Java, Python, RDBMS/SQL, Linux/Bash, Agile/Scrum, Docker, Data Structures and Algorithms
+**Proficient:** Java, Python, RDBMS/SQL, Agile/Scrum, Data Structures and Algorithms
 
-**Competent:** Javascript, HTML/CSS, Bootstrap, UML Diagrams, JIRA, GIT
+**Competent:** Linux/Bash, Docker, Javascript, UML Diagrams, GIT
 
-**Familiar:** C, VBA, Prolog for AI, PHP/React/Node JS, R / Hadoop, Axure / GCP, SAS Enterprise Guide and Miner / Cognos / MicroStrategy BI
+**Familiar:** HTML/CSS, Bootstrap, JIRA, C, VBA, Prolog for AI, PHP/React/Node JS, R / Hadoop, Axure / GCP, SAS Enterprise Guide and Miner / Cognos / MicroStrategy BI
 
 ## Jarvis Projects
 
@@ -23,9 +23,9 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_JjFalcon](
   - JDBC App: Demonstrates the DAO/DTO implementation of JDBC to a PostgreSQL RDBMS.  Implemented and tested basic CRUD and DML operations.
   - Grep App: Simulates the Unix grep implementation that searches all files recursively from a given directory argument and outputs a file containing all the lines that match the given regex pattern argument.  Deployed via Docker.
 
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/master/springboot)]: COMING SOON
+**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/master/springboot)]:  A POC development of a trading platform that allows users to manage client profiles and accounts, monitor portfolio performance and trade securities. The microservices are auto-configured using SpringBoot and utilize Apache Tomcat as the embedded servlet. The app is built within a Spring Framework to facilitate a decoupling via IoC. The app fetches data from IEX Cloud via its REST API and persisted to a PostgreSQL DB via Docker containers. 
 
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/master/python_data_anlytics)]: COMING SOON
+**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/master/python_data_wrangling)]:  A POC development to provide sample business intelligence about sales trend and customer portfolio. This application ran on the Jupyter Notebook environment that accesses the file ingested into a PostgreSQL DB via Docker containers. The app utilizes the Pandas Dataframe and Matplotlib to provide the relevant business intelligence and charts. 
 
 **Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JjFalcon/tree/master/hadoop)]: COMING SOON
 
